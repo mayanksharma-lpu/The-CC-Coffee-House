@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CONTACT • The CC Coffee House</title>
+
+  <!-- Font + Icons + AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      list-style: none;
+    }
+
+    body {
+      background: #080d1a;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    /* NEON COLORS */
+    :root {
+      --neon-gold: #ffdf59;
+      --neon-blue: #50c8ff;
+      --glass-bg: rgba(255,255,255,0.05);
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 18px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      z-index: 1000;
+    }
+
+    header img {
+      width: 160px;
+      filter: drop-shadow(0 0 12px var(--neon-gold));
+    }
+
+    header ul {
+      display: flex;
+      gap: 18px;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      padding: 8px 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      transition: .3s;
+    }
+
+    header a:hover,
+    .active-link {
+      background: var(--neon-gold);
+      color: black;
+      box-shadow: 0 0 14px var(--neon-gold);
+    }
+
+    /* CONTACT SECTION */
+    .contact {
+      min-height: 100vh;
+      padding-top: 170px;
+      padding-bottom: 60px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 3.5rem;
+      margin-bottom: 40px;
+      color: var(--neon-gold);
+      text-shadow: 0 0 25px var(--neon-gold);
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(25px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1100px;
+      width: 90%;
+      margin: auto;
+    }
+
+    /* FORM */
+    .contact-form {
+      background: var(--glass-bg);
+      padding: 25px;
+      border-radius: 15px;
+      backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: .3s;
+    }
+
+    .contact-form:hover {
+      box-shadow: 0 0 20px var(--neon-gold);
+      transform: translateY(-6px);
+    }
+
+    .contact-form label {
+      font-size: 1.2rem;
+      text-align: left;
+      color: var(--neon-gold);
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 12px;
+      background: rgba(0,0,0,0.4);
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .contact-form button {
+      padding: 12px;
+      background: var(--neon-gold);
+      border: none;
+      color: black;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: .3s;
+      font-size: 1.2rem;
+    }
+
+    .contact-form button:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 14px var(--neon-gold);
+    }
+
+    /* CONTACT LINKS */
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .contact-card {
+      background: var(--glass-bg);
+      padding: 20px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      text-decoration: none;
+      color: white;
+      transition: .3s;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .contact-card:hover {
+      transform: translateX(12px);
+      box-shadow: 0 0 20px var(--neon-blue);
+    }
+
+    .contact-card i {
+      font-size: 2.3rem;
+      color: var(--neon-gold);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform:translateY(0); }
+      50% { transform:translateY(-10px); }
+    }
+
+    .contact-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 5px;
+      color: var(--neon-gold);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 80px;
+      padding: 20px;
+      text-align: center;
+      background: #090d17;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <img src="images/cafe logo.jpg" alt="logo">
+    <ul>
+      <li><a href="index.html">HOME</a></li>
+      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="menu.html">MENU</a></li>
+      <li><a href="contact.html" class="active-link">CONTACT US</a></li>
+      <li><a href="RATING.html">RATE US</a> </li>
+    </ul>
+    <a href="login.html" class="login-btn"><i class="fa-solid fa-user"></i> Login</a>
+  </header>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <h2 data-aos="fade-up">Get In Touch</h2>
+
+    <div class="contact-container">
+      <!-- FORM -->
+      <form class="contact-form" data-aos="fade-up">
+        <label>Name</label>
+        <input type="text" placeholder="Enter your name" required>
+
+        <label>Email</label>
+        <input type="email" placeholder="Enter your email" required>
+
+        <label>Message</label>
+        <textarea rows="5" placeholder="Write your message"></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+
+      <!-- CONTACT LINKS -->
+      <div class="contact-links">
+        <a href="#" class="contact-card" data-aos="fade-up" data-aos-delay="150">
+          <i class="fab fa-instagram"></i>
+          <div>
+            <h3>Instagram</h3>
+            <p>Follow us for updates</p>
+          </div>
+        </a>
+
+        <a href="https://github.com/mayanksharma-lpu" target="_blank" class="contact-card" data-aos="fade-up" data-aos-delay="300">
+          <i class="fab fa-github"></i>
+          <div>
+            <h3>GitHub</h3>
+            <p>See my development work</p>
+          </div>
+        </a>
+
+        <a href="mailto:mayanksharmajind@gmail.com" class="contact-card" data-aos="fade-up" data-aos-delay="450">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h3>Email</h3>
+            <p>mayanksharmajind@gmail.com</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2025 All Rights Reserved — Mayank Sharma,The CC Coffee House
+  </footer>
+
+  <!-- AOS SCRIPT -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration:1200 });
+  </script>
+  <!-- AOS Script -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 1200 });</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const loginBtn = document.querySelector(".login-btn");
+
+    if(localStorage.getItem("loggedInUser")){
+        if(loginBtn){
+            loginBtn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i> Logout';
+            loginBtn.href = "#";
+            loginBtn.addEventListener("click", () => {
+                localStorage.removeItem("loggedInUser");
+                alert("Logged out successfully!");
+                location.reload();
+            });
+        }
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABOUT US - The CC Coffee House</title>
+
+<!-- Icons + AOS Animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+<style>
+
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+  list-style:none;
+}
+
+body{
+  background:#080d1a;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* NEON COLORS */
+:root{
+  --neon-gold:#ffdf59;
+  --neon-blue:#50c8ff;
+  --glass-bg:rgba(255,255,255,0.05);
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0; left:0; right:0;
+  padding:18px 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(10px);
+  background:rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.2);
+  z-index:1000;
+}
+
+header img{
+  width:160px;
+  filter:drop-shadow(0 0 12px var(--neon-gold));
+}
+
+header ul{
+  display:flex;
+  gap:18px;
+}
+
+header a{
+  color:white;
+  text-decoration:none;
+  padding:8px 20px;
+  background:rgba(255,255,255,0.1);
+  border-radius:20px;
+  transition:.3s;
+}
+
+header a:hover,
+.active-link{
+  background:var(--neon-gold);
+  color:black;
+  box-shadow:0 0 14px var(--neon-gold);
+}
+
+/* PAGE TITLE */
+.page-title{
+  text-align:center;
+  margin-top:180px;
+  font-size:3.5rem;
+  text-shadow:0 0 25px var(--neon-gold);
+  animation:fadeIn 1.5s ease;
+}
+
+@keyframes fadeIn{
+  from{ opacity:0; transform:translateY(25px); }
+  to{ opacity:1; transform:translateY(0); }
+}
+
+/* ABOUT SECTIONS */
+.about-container{
+  width:90%;
+  margin:50px auto 50px auto;
+}
+
+.about-section{
+  background:var(--glass-bg);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:18px;
+  padding:25px;
+  margin-bottom:55px;
+  backdrop-filter:blur(8px);
+  display:flex;
+  align-items:center;
+  gap:30px;
+  transition:.3s;
+}
+
+.about-section:hover{
+  box-shadow:0 0 20px var(--neon-gold);
+  transform:translateY(-6px);
+}
+
+.about-section img{
+  width:330px;
+  border-radius:12px;
+  animation:float 4s ease-in-out infinite;
+  filter:drop-shadow(0 0 12px var(--neon-blue));
+}
+
+@keyframes float{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-12px); }
+}
+
+.about-text h3{
+  font-size:2rem;
+  color:var(--neon-gold);
+  margin-bottom:10px;
+  text-shadow:0 0 10px black;
+}
+
+.about-text p{
+  font-size:1.15rem;
+  line-height:1.6;
+  opacity:0.85;
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:900px){
+  .about-section{
+    flex-direction:column;
+    text-align:center;
+  }
+  .about-section img{
+    width:95%;
+  }
+}
+
+/* FOOTER */
+footer{
+  margin-top:80px;
+  padding:20px;
+  text-align:center;
+  background:#090d17;
+  border-top:1px solid rgba(255,255,255,0.15);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <img src="images/cafe logo.jpg">
+    <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html" class="active-link">ABOUT</a></li>
+        <li><a href="menu.html">MENU</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="RATING.html">RATE US</a> </li>
+    </ul>
+    <a href="login.html" class="login-btn"><i class="fa-solid fa-user"></i> Login</a>
+</header>
+
+<!-- PAGE TITLE -->
+<h1 class="page-title">ABOUT US</h1>
+
+<div class="about-container">
+
+    <!-- 1 Ambience -->
+    <div class="about-section" data-aos="fade-up">
+      <img src="images/cafe-group-sitting-area.jpg" alt="">
+      <div class="about-text">
+        <h3>Our Café Ambience</h3>
+        <p>
+          The CC Coffee House is built for those who appreciate aesthetics, warmth, and a sense of belonging. 
+          The moment you enter, you're welcomed by a soft neon glow, clean premium interiors and the soothing 
+          aroma of fresh coffee brewing every minute. Whether you're here to chill with friends, study for long 
+          hours, or enjoy a peaceful solo coffee moment — the ambience envelopes you in comfort.  
+          Soft music, gentle lighting, cozy seating and an atmosphere curated to make people stay longer, talk deeper, 
+          laugh louder and create memories — this is the soul of our café.
+        </p>
+      </div>
+    </div>
+
+    <!-- 2 Party Hall -->
+    <div class="about-section" data-aos="fade-up" data-aos-delay="150">
+      <img src="images/party area.jpg" alt="">
+      <div class="about-text">
+        <h3>Premium Party Hall</h3>
+        <p>
+          Our neon-themed party area is designed to transform celebrations into unforgettable experiences.  
+          From birthdays, anniversaries, farewell parties to corporate gatherings, our event space offers 
+          premium seating, customizable lighting, curated music, decor options and an energetic vibe that 
+          sets the perfect mood. We take care of arrangements, food, beverages and serving — so you can 
+          freely enjoy your moment without stress. With stunning backdrops for pictures, dedicated service 
+          staff, and space that feels alive — your party becomes more than an event, it becomes a memory worth keeping.
+        </p>
+      </div>
+    </div>
+
+    <!-- 3 Signature Taste -->
+    <div class="about-section" data-aos="fade-up" data-aos-delay="300">
+      <img src="images/imported coffe.jpg" alt="">
+      <div class="about-text">
+        <h3>Our Signature Taste</h3>
+        <p>
+          Great coffee begins long before the cup — it begins with the bean. 
+          We source premium beans from Ethiopia, Brazil and Colombia, known globally for depth, 
+          texture and bold aroma. Each batch is freshly roasted to preserve natural oils, delivering 
+          a cup that feels rich, smooth and expressive. Our baristas practise brewing as an art — carefully 
+          extracting flavours that highlight sweetness, strength and warmth with every sip.  
+          From creamy lattes and strong americanos to cold brews, mochas, handcrafted shakes and dessert coffees —
+          every drink you taste is detailed, balanced and made with love. One sip should feel like home.
+        </p>
+      </div>
+    </div>
+
+    <!-- 4 Service Quality -->
+    <div class="about-section" data-aos="fade-up" data-aos-delay="450">
+      <img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2" alt="">
+      <div class="about-text">
+        <h3>Our Premium Service</h3>
+        <p>
+          At The CC Coffee House, service is not just hospitality — it's emotion.  
+          Our staff is trained to assist personally, communicate warmly and make every guest feel valued, 
+          whether you stay for five minutes or five hours. From suggesting best sellers based on your mood, 
+          customizing your drink preferences, serving food on time to ensuring comfort and hygiene — 
+          we take care of everything with detail and attentiveness.  
+          We don’t just serve coffee — we serve experiences. Every interaction matters, every smile matters, 
+          every customer matters. You are not a visitor here — you are part of the CC family.
+        </p>
+      </div>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 All Rights Reserved — Mayank Sharma, The CC Coffee House
+</footer>
+
+<!-- AOS SCRIPT -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration:1200 });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const loginBtn = document.querySelector(".login-btn");
+
+    if(localStorage.getItem("loggedInUser")){
+        if(loginBtn){
+            loginBtn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i> Logout';
+            loginBtn.href = "#";
+            loginBtn.addEventListener("click", () => {
+                localStorage.removeItem("loggedInUser");
+                alert("Logged out successfully!");
+                location.reload();
+            });
+        }
+    }
+});
+</script>
+
+</body>
+</html>

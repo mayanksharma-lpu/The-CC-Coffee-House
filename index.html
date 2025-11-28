@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CC Coffee House</title>
+
+<!-- FONT + ICONS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- AOS Animation Library -->
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+<style>
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins",sans-serif;
+}
+
+body{
+    background:#080d1a;
+    color:#fff;
+    overflow-x:hidden;
+}
+
+/* NEON GLOW VARIABLES */
+:root{
+    --neon-gold:#ffdf59;
+    --neon-blue:#4ec4ff;
+    --glass-bg:rgba(255,255,255,0.06);
+}
+
+/* HEADER */
+header{
+    position:fixed;
+    top:0;left:0;right:0;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(12px);
+    background:rgba(255,255,255,0.05);
+    border-bottom:1px solid rgba(255,255,255,0.2);
+    z-index:1000;
+}
+
+header img{
+    width:160px;
+    filter:drop-shadow(0 0 10px var(--neon-gold));
+}
+
+header ul{
+    display:flex;
+    gap:20px;
+    list-style:none;
+}
+
+header a{
+    color:white;
+    padding:8px 18px;
+    border:1px solid transparent;
+    text-decoration:none;
+    transition:.3s;
+    border-radius:20px;
+    background:rgba(255,255,255,0.1);
+}
+
+header a:hover{
+    border-color:var(--neon-gold);
+    box-shadow:0 0 12px var(--neon-gold);
+    color:black;
+    background:var(--neon-gold);
+}
+
+/* HERO — SPLIT SCREEN CINEMATIC */
+.hero{
+    margin-top:120px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px;
+    gap:40px;
+}
+
+.hero-text{
+    flex:1;
+}
+
+.hero-text h1{
+    font-size:4.5rem;
+    line-height:1.1;
+    text-shadow:0 0 25px var(--neon-gold);
+}
+
+.hero-text p{
+    margin:15px 0;
+    font-size:1.8rem;
+    opacity:0.8;
+}
+
+.btn{
+    padding:12px 25px;
+    font-size:1.4rem;
+    border:none;
+    border-radius:30px;
+    background:var(--neon-gold);
+    color:black;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 15px var(--neon-gold);
+}
+
+/* FLOATING COFFEE IMAGE */
+.hero-img{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.hero-img img{
+    width:380px;
+    animation:float 4s ease-in-out infinite;
+    filter:drop-shadow(0 0 20px var(--neon-blue));
+}
+
+@keyframes float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-20px); }
+}
+
+/* SERVICES */
+.section-title{
+    text-align:center;
+    margin:80px 0 30px 0;
+    font-size:2.9rem;
+    text-shadow:0 0 15px var(--neon-gold);
+}
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    padding:0 40px;
+}
+
+.service-card{
+    background:var(--glass-bg);
+    border:1px solid rgba(255,255,255,0.15);
+    padding:15px;
+    border-radius:15px;
+    backdrop-filter:blur(8px);
+    transition:.3s;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 0 15px var(--neon-gold);
+}
+
+.service-card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+/* ABOUT */
+.about{
+    display:flex;
+    align-items:center;
+    gap:40px;
+    max-width:1100px;
+    margin:100px auto;
+    padding:20px;
+}
+
+.about img{
+    width:300px;
+    border-radius:10px;
+    box-shadow:0 0 15px var(--neon-blue);
+}
+
+.about div{
+    background:var(--glass-bg);
+    padding:25px;
+    border-radius:15px;
+    backdrop-filter:blur(10px);
+}
+
+/* CONTACT */
+.contact{
+    width:90%;
+    margin:80px auto;
+    padding:40px;
+    background:var(--glass-bg);
+    border-radius:15px;
+    backdrop-filter:blur(10px);
+}
+
+.contact-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.contact input, .contact textarea{
+    width:100%;
+    padding:12px;
+    margin-bottom:15px;
+    border:none;
+    background:transparent;
+    border-bottom:1px solid white;
+    color:white;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:15px;
+    margin-top:50px;
+    background:#06090f;
+    border-top:1px solid rgba(255,255,255,0.2);
+}
+a{
+    color: black;
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:900px){
+
+    .hero{
+        flex-direction:column;
+        text-align:center;
+        padding:30px;
+    }
+
+    .hero-text h1{
+        font-size:3.2rem;
+    }
+
+    .hero-img img{
+        width:260px;
+    }
+
+    .about{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .contact-container{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="images/cafe logo.jpg">
+    <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="menu.html">MENU</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="RATING.html">RATE US</a> </li>
+    </ul>
+    <a href="login.html" class="login-btn"><i class="fa-solid fa-user"></i> Login</a>
+    <
+    
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero" data-aos="fade-up">
+    <div class="hero-text">
+        <h1>The CC Coffee House</h1>
+        <p>Serving premium roasted coffee with a futuristic ambience since 1999.</p>
+        <button class="btn"><a href="new3.html">Order Your Coffee</a></button>
+    </div>
+
+    <div class="hero-img">
+        <img src="images/coffe_faling-removebg-preview.png" alt="Coffee Cup">
+    </div>
+</section>
+
+<!-- SERVICES -->
+<h1 class="section-title">OUR SERVICES</h1>
+
+<div class="services">
+    <div class="service-card" data-aos="fade-up">
+        <img src="images/party area.jpg">
+        <h3>Party Hall</h3>
+    </div>
+    <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+        <img src="images/cafe-group-sitting-area.jpg">
+        <h3>Dine-In Area</h3>
+    </div>
+    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+        <img src="images/imported coffe.jpg">
+        <h3>Imported Coffee</h3>
+    </div>
+    <div class="service-card" data-aos="fade-up" data-aos-delay="450">
+        <img src="images/delivery.jpg">
+        <h3>Fast Delivery</h3>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" data-aos="fade-up">
+    <img src="images/about us cup.webp">
+    <div>
+        <h1>ABOUT US</h1>
+        <p>The CC Coffee Shop, since 1999, has been serving premium coffee and a peaceful atmosphere for all age groups. A perfect space to relax, chill, and enjoy aromatic coffee.</p>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" data-aos="fade-up">
+    <h1 class="section-title">CONTACT US</h1>
+
+    <div class="contact-container">
+        <div>
+            <h3>Email:</h3><p>youremail@gmail.com</p>
+            <h3>Phone:</h3><p>94XXXXXX09</p>
+            <h3>Address:</h3><p>1234, City XYZ</p>
+        </div>
+
+        <form>
+            <input type="text" placeholder="Full Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea rows="4" placeholder="Message" required></textarea>
+            <button class="btn">Submit</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    © 2025 — All Rights Reserved- Mayank Sharma, The CC Coffe House
+</footer>
+
+<!-- AOS Script -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 1200 });</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const loginBtn = document.querySelector(".login-btn");
+
+    if(localStorage.getItem("loggedInUser")){
+        if(loginBtn){
+            loginBtn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i> Logout';
+            loginBtn.href = "#";
+            loginBtn.addEventListener("click", () => {
+                localStorage.removeItem("loggedInUser");
+                alert("Logged out successfully!");
+                location.reload();
+            });
+        }
+    }
+});
+</script>
+
+
+</body>
+</html>

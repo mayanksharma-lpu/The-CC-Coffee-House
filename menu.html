@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The CC Coffee House | Menu</title>
+
+<!-- Icons + AOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+
+<style>
+/* RESET */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:"Poppins",sans-serif;
+}
+
+body{
+  background:#080d1a;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* NEON COLORS */
+:root{
+  --neon-gold:#ffdf59;
+  --neon-blue:#50c8ff;
+  --glass-bg:rgba(255,255,255,0.05);
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0; left:0; right:0;
+  padding:18px 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(10px);
+  background:rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.2);
+  z-index:1000;
+}
+
+header img{
+  width:160px;
+  filter:drop-shadow(0 0 12px var(--neon-gold));
+}
+
+header ul{
+  display:flex;
+  gap:18px;
+}
+
+header a{
+  color:white;
+  text-decoration:none;
+  padding:8px 20px;
+  background:rgba(255,255,255,0.1);
+  border-radius:20px;
+  transition:.3s;
+}
+
+header a:hover,
+.active-link{
+  background:var(--neon-gold);
+  color:black;
+  box-shadow:0 0 14px var(--neon-gold);
+}
+
+/* CATEGORY TITLES */
+h2{
+  text-align:center;
+  margin-top:170px;
+  margin-bottom:40px;
+  font-size:2.8rem;
+  color:var(--neon-gold);
+  text-shadow:0 0 20px black;
+}
+
+/* PRODUCTS GRID */
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:35px;
+  width:90%;
+  margin:0 auto 60px auto;
+}
+
+/* PRODUCT CARD */
+.product{
+  background:var(--glass-bg);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:18px;
+  padding:20px;
+  text-align:center;
+  backdrop-filter:blur(8px);
+  transition:.3s;
+}
+
+.product:hover{
+  transform:translateY(-10px);
+  box-shadow:0 0 20px var(--neon-gold);
+}
+
+.product img{
+  width:200px;
+  height:140px;
+  object-fit:cover;
+  border-radius:12px;
+  filter:drop-shadow(0 0 10px var(--neon-blue));
+  animation:float 3.5s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-10px); }
+}
+
+.product h3{
+  margin-top:12px;
+  font-size:1.4rem;
+  color:var(--neon-gold);
+}
+
+.product p{
+  margin:5px 0 12px 0;
+  font-size:1.1rem;
+}
+
+/* BUTTONS */
+button{
+  margin-top:6px;
+  padding:9px 20px;
+  border:none;
+  border-radius:25px;
+  font-size:1rem;
+  cursor:pointer;
+  background:var(--neon-gold);
+  color:black;
+  font-weight:600;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.08);
+  box-shadow:0 0 15px var(--neon-gold);
+}
+
+/* CART */
+.cart{
+  width:90%;
+  margin:40px auto 80px auto;
+  padding:25px;
+  background:var(--glass-bg);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:18px;
+  backdrop-filter:blur(8px);
+  box-shadow:0 0 15px rgba(255,255,255,0.08);
+}
+
+.cart h2{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+#cart-items li{
+  margin:10px 0;
+  font-size:1.2rem;
+}
+
+#place-order{
+  display:block;
+  margin:20px auto 0 auto;
+  background:#00e07d;
+  color:black;
+}
+#place-order:hover{
+  box-shadow:0 0 15px #00e07d;
+}
+
+#thank-you{
+  text-align:center;
+  margin-top:15px;
+  font-size:1.4rem;
+  color:#00ff99;
+  text-shadow:0 0 10px #00ff99;
+}
+
+/* FOOTER */
+footer{
+  margin-top:60px;
+  padding:20px;
+  text-align:center;
+  background:#090d17;
+  border-top:1px solid rgba(255,255,255,0.15);
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:900px){
+  .products{
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  }
+  .product img{
+    width:95%;
+    height:auto;
+  }
+  h2{
+    font-size:2rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <img src="images/cafe logo.jpg">
+    <ul>
+        <li><a href="index.html">HOME</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="menu.html" class="active-link">MENU</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href="RATING.html">RATE US</a> </li>
+    </ul>
+    <a href="login.html" class="login-btn"><i class="fa-solid fa-user"></i> Login</a>
+</header>
+
+<!-- COFFEE SECTION -->
+<h2 data-aos="fade-up">Coffee</h2>
+<div class="products">
+  <div class="product" data-aos="fade-up"><img src="menu pic/americano.jpg"><h3>Americano</h3><p>₹110</p><button onclick="addToCart('Americano', 110)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="100"><img src="menu pic/espresso.jpg"><h3>Espresso</h3><p>₹100</p><button onclick="addToCart('Espresso', 100)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="200"><img src="menu pic/mocha cff.jpg"><h3>Mocha</h3><p>₹150</p><button onclick="addToCart('Mocha', 150)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="300"><img src="menu pic/frappe coffe.jpg"><h3>Frappe</h3><p>₹179</p><button onclick="addToCart('Frappe', 179)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="400"><img src="menu pic/cappuccino.jpg"><h3>Cappuccino</h3><p>₹90</p><button onclick="addToCart('Cappuccino', 90)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="500"><img src="menu pic/hot choc cff.jpg"><h3>Hot Choco</h3><p>₹80</p><button onclick="addToCart('Hot Choco', 80)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="600"><img src="menu pic/cold coffe.jpg"><h3>Cold Coffee</h3><p>₹80</p><button onclick="addToCart('Cold Coffee', 80)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="700"><img src="menu pic/iced coffe.jpg"><h3>Iced Coffee</h3><p>₹60</p><button onclick="addToCart('Iced Coffee', 60)">Add to Cart</button></div>
+</div>
+
+<!-- TEA SECTION -->
+<h2 data-aos="fade-up">Special Tea</h2>
+<div class="products">
+  <div class="product" data-aos="fade-up"><img src="menu pic/ice tea.jpg"><h3>Ice Tea</h3><p>₹55</p><button onclick="addToCart('Ice Tea', 55)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="100"><img src="menu pic/milk tea.jpg"><h3>Milk Tea</h3><p>₹50</p><button onclick="addToCart('Milk Tea', 50)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="200"><img src="menu pic/lemon tea.jpg"><h3>Lemon Tea</h3><p>₹65</p><button onclick="addToCart('Lemon Tea', 65)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="300"><img src="menu pic/matcha latte.jpg"><h3>Matcha Tea</h3><p>₹85</p><button onclick="addToCart('Matcha Tea', 85)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="400"><img src="menu pic/gud tea.jpg"><h3>Guud Chai</h3><p>₹60</p><button onclick="addToCart('Guud Chai', 60)">Add to Cart</button></div>
+</div>
+
+<!-- SNACKS SECTION -->
+<h2 data-aos="fade-up">Snacks</h2>
+<div class="products">
+  <div class="product" data-aos="fade-up"><img src="menu pic/french fries.jpg"><h3>French Fries</h3><p>₹50</p><button onclick="addToCart('French Fries', 50)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="100"><img src="menu pic/peri peri.jpg"><h3>Peri Peri Fries</h3><p>₹85</p><button onclick="addToCart('Peri Peri Fries', 85)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="200"><img src="menu pic/bun maska.jpg"><h3>Bun Maska</h3><p>₹65</p><button onclick="addToCart('Bun Maska', 65)">Add to Cart</button></div>
+  <div class="product" data-aos="fade-up" data-aos-delay="300"><img src="menu pic/garlic bread.jpg"><h3>Garlic Bread</h3><p>₹110</p><button onclick="addToCart('Garlic Bread', 110)">Add to Cart</button></div>
+</div>
+
+<!-- CART -->
+<div class="cart" data-aos="fade-up">
+  <h2>Your Cart</h2>
+  <ul id="cart-items"></ul>
+  <div id="total">Total: ₹0</div>
+  <button id="place-order" onclick="placeOrder()">Place Order</button>
+</div>
+<div id="thank-you"></div>
+
+<!-- CART SCRIPT -->
+<script>
+const cart = {};
+let total = 0;
+
+function addToCart(item, price){
+  if(cart[item]) cart[item].quantity++;
+  else cart[item] = {price, quantity:1};
+  updateCart();
+}
+
+function removeFromCart(item){
+  if(cart[item]){
+    cart[item].quantity--;
+    if(cart[item].quantity <= 0) delete cart[item];
+    updateCart();
+  }
+}
+
+function updateCart(){
+  const cartList = document.getElementById("cart-items");
+  const totalDisplay = document.getElementById("total");
+  cartList.innerHTML = "";
+  total = 0;
+  for(const item in cart){
+    const li = document.createElement("li");
+    const itemTotal = cart[item].price * cart[item].quantity;
+    li.innerHTML = `${item} × ${cart[item].quantity} = ₹${itemTotal} <button onclick="removeFromCart('${item}')">Remove</button>`;
+    cartList.appendChild(li);
+    total += itemTotal;
+  }
+  totalDisplay.textContent = `Total: ₹${total}`;
+}
+
+function placeOrder(){
+  if(total === 0){
+    alert("Your cart is empty!");
+    return;
+  }
+  document.getElementById("thank-you").textContent = "🎉 Thank you for your order!";
+  for(const item in cart) delete cart[item];
+  updateCart();
+}
+</script>
+
+
+<!-- AOS SCRIPT -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration:1200 });
+</script>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 Mayank Sharma — Mayank Sharma,All Rights Reserved.
+</footer>
+<!-- AOS Script -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 1200 });</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const loginBtn = document.querySelector(".login-btn");
+
+    if(localStorage.getItem("loggedInUser")){
+        if(loginBtn){
+            loginBtn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i> Logout';
+            loginBtn.href = "#";
+            loginBtn.addEventListener("click", () => {
+                localStorage.removeItem("loggedInUser");
+                alert("Logged out successfully!");
+                location.reload();
+            });
+        }
+    }
+});
+</script>
+
+</body>
+</html>

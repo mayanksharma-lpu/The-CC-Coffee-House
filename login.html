@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CC Coffee — Login</title>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --neon-gold:#ffdf59;
+    --neon-blue:#4ec4ff;
+    --white-frost:rgba(255,255,255,0.15);
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#07101c,#0f1b33,#07121f);
+    overflow:hidden;
+}
+
+/* BLUR GLASS BOX */
+.login-container{
+    width:400px;
+    padding:40px;
+    background:var(--white-frost);
+    backdrop-filter:blur(22px);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:18px;
+    box-shadow:0 0 25px rgba(0,0,0,0.45);
+    animation:fadeIn .9s ease;
+}
+
+/* TITLE */
+.login-container h2{
+    text-align:center;
+    font-size:2rem;
+    color:var(--neon-gold);
+    margin-bottom:25px;
+    text-shadow:0 0 12px var(--neon-gold);
+}
+
+/* INPUT STYLING */
+.input-box{
+    margin-bottom:18px;
+}
+.input-box label{
+    font-size:.9rem;
+    opacity:.85;
+    color:#fff;
+}
+.input-box input{
+    width:100%;
+    margin-top:6px;
+    padding:12px;
+    font-size:1rem;
+    color:white;
+    background:rgba(255,255,255,0.08);
+    border:none;
+    border-radius:10px;
+    outline:none;
+    transition:.3s;
+}
+.input-box input:focus{
+    box-shadow:0 0 12px var(--neon-blue);
+    border:1px solid var(--neon-blue);
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    padding:13px;
+    font-size:1.1rem;
+    border:none;
+    border-radius:25px;
+    background:var(--neon-gold);
+    cursor:pointer;
+    font-weight:600;
+}
+button:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 15px var(--neon-gold);
+}
+
+/* BOTTOM LINKS */
+.bottom-text{
+    text-align:center;
+    margin-top:15px;
+}
+.bottom-text a{
+    color:var(--neon-blue);
+    text-decoration:none;
+    font-size:.9rem;
+}
+.bottom-text a:hover{
+    text-shadow:0 0 10px var(--neon-blue);
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{ opacity:0; transform:translateY(30px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="login-container">
+    <h2>Welcome Back ☕</h2>
+
+    <div class="input-box">
+        <label>Email</label>
+        <input type="email" id="email" placeholder="Enter your email">
+    </div>
+
+    <div class="input-box">
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter your password">
+    </div>
+
+    <button onclick="login()">Login</button>
+
+    <p class="bottom-text">
+        New here? <a onclick="createAccount()" style="cursor:pointer;">Create an account</a>
+    </p>
+</div>
+
+
+<script>
+function login(){
+    let email = document.getElementById("email").value;
+    let pass = document.getElementById("password").value;
+
+    let savedUser = JSON.parse(localStorage.getItem("user"));
+
+    if(savedUser && savedUser.email === email && savedUser.password === pass){
+        localStorage.setItem("loggedInUser", email);
+        alert("Login Successful!");
+        window.location.href = "index.html";
+    } else {
+        alert("Invalid email or password");
+    }
+}
+
+function createAccount(){
+    let email = prompt("Enter Email:");
+    let pass = prompt("Create Password:");
+    if(email && pass){
+        localStorage.setItem("user", JSON.stringify({email, password:pass}));
+        alert("Account created! Login Now.");
+    }
+}
+</script>
+</body>
+</html>

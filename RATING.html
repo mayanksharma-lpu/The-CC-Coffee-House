@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>CC Coffee House | Home</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+
+/* ========= VARIABLES ========= */
+
+:root{
+  --neon-gold:#ffdf59;
+  --neon-blue:#4ec4ff;
+  --glass:rgba(255,255,255,0.06);
+  --bg:#080d1a;
+  --text:#ffffff;
+}
+
+/* ========= RESET ========= */
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{background:var(--bg);color:var(--text);overflow-x:hidden;}
+
+/* ========= NAVBAR ========= */
+
+header{
+  width:100%;
+  padding:15px 25px;
+  position:fixed;
+  top:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter: blur(7px);
+  background:rgba(255,255,255,0.06);
+  border-bottom:1px solid rgba(255,255,255,0.15);
+  z-index:2000;
+}
+
+.logo{
+  font-size:1.6rem;
+  font-weight:700;
+  color:var(--neon-gold);
+  text-shadow:0 0 10px var(--neon-gold);
+}
+
+nav a{
+  margin:0 10px;
+  text-decoration:none;
+  color:white;
+  padding:8px 15px;
+  border-radius:20px;
+  transition:.3s;
+  background:rgba(255,255,255,0.05);
+}
+
+nav a:hover, nav .active{
+  background:var(--neon-gold);
+  color:black;
+}
+
+/* Mobile hamburger */
+#menu-btn{
+  display:none;
+  font-size:1.7rem;
+  cursor:pointer;
+}
+
+/* Mobile menu behavior */
+@media(max-width:768px){
+  nav{ 
+    position:fixed;
+    right:-120%;
+    top:75px;
+    width:220px;
+    padding:20px;
+    backdrop-filter: blur(12px);
+    background:rgba(255,255,255,0.09);
+    border-left:1px solid rgba(255,255,255,0.2);
+    transition:.3s;
+    flex-direction:column;
+  }
+
+  nav.show{ right:0%; }
+
+  nav a{
+    margin:12px 0;
+    width:100%;
+    text-align:center;
+    display:block;
+  }
+
+  #menu-btn{ display:block; }
+}
+
+/* ========= HERO ========= */
+
+.hero{
+  position:relative;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:0 15px;
+}
+
+.hero h1{
+  font-size:3.2rem;
+  text-shadow:0 0 20px var(--neon-gold);
+}
+
+.hero p{margin-top:10px;font-size:1.1rem;}
+
+.btn{
+  margin-top:20px;
+  display:inline-block;
+  padding:12px 25px;
+  background:var(--neon-gold);
+  color:black;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  box-shadow:0 0 15px var(--neon-gold);
+}
+
+/* ========= PARTICLE CANVAS ========= */
+#particles{
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  z-index:-1;
+  opacity:0.4;
+}
+
+/* ========= RATING SECTION ========= */
+
+.rating-box{
+  width:90%;
+  max-width:420px;
+  background:var(--glass);
+  margin:15px auto;
+  padding:20px;
+  border-radius:18px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,0.15);
+}
+
+.rating-box select,
+.rating-box button{
+  margin-top:10px;
+  padding:10px;
+  width:80%;
+  border-radius:10px;
+  border:none;
+}
+
+.rating-box button{
+  background:var(--neon-blue);
+  font-weight:bold;
+  cursor:pointer;
+}
+
+/* ========= FOOTER ========= */
+
+footer{
+  text-align:center;
+  padding:20px;
+  margin-top:50px;
+  opacity:0.7;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo"><img src="images/cafe logo.jpg"></div>
+  <i id="menu-btn" class="fas fa-bars"></i>
+  <nav>
+    <a class="active" href="index.html">Home</a>
+    <a href="menu.html">MENU</a>
+    <a href="about.html">ABOUT</a>
+    <a href="contact.html">CONTACT</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <canvas id="particles"></canvas>
+  <div>
+    <h1>Sip. Relax. Glow.</h1>
+    <p>Coffee crafted with love & neon ambience.</p>
+    <a href="menu.html" class="btn">Order Now</a>
+  </div>
+</section>
+
+<section class="rating-box">
+  <h3 id="avg-rating">Average Rating ⭐ 0</h3>
+  <select id="rate">
+    <option value="5">⭐⭐⭐⭐⭐</option>
+    <option value="4">⭐⭐⭐⭐</option>
+    <option value="3">⭐⭐⭐</option>
+    <option value="2">⭐⭐</option>
+    <option value="1">⭐</option>
+  </select>
+  <button id="submit-rating">Submit</button>
+  <p id="msg" style="margin-top:10px;color:var(--neon-blue)"></p>
+</section>
+
+<footer>© 2025 CC Coffee House</footer>
+
+
+<script>
+
+/* ========= MOBILE MENU ========= */
+
+const menuBtn = document.getElementById("menu-btn");
+const nav = document.querySelector("nav");
+
+menuBtn.onclick = ()=> nav.classList.toggle("show");
+
+
+/* ========= RATING SYSTEM ========= */
+
+const rateSelect = document.getElementById("rate");
+const submitBtn = document.getElementById("submit-rating");
+const averageText = document.getElementById("avg-rating");
+const message = document.getElementById("msg");
+
+let ratings = JSON.parse(localStorage.getItem("cc_ratings") || "[]");
+
+function refreshRating(){
+  if(ratings.length === 0){
+    averageText.textContent = "Average Rating ⭐ No ratings yet";
+    return;
+  }
+  let avg = ratings.reduce((a,b)=>a+b) / ratings.length;
+  averageText.textContent = `Average Rating ⭐ ${avg.toFixed(1)} (${ratings.length} reviews)`;
+}
+
+submitBtn.onclick = ()=>{
+  ratings.push(Number(rateSelect.value));
+  localStorage.setItem("cc_ratings", JSON.stringify(ratings));
+  message.textContent = "Thanks for rating! ❤️";
+  refreshRating();
+};
+
+refreshRating();
+
+
+/* ========= PARTICLE ANIMATION ========= */
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<60;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    s:Math.random()*2+1,
+    dx:(Math.random()-0.5)*1,
+    dy:(Math.random()-0.5)*1
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.s,0,Math.PI*2);
+    ctx.fillStyle="rgba(78,196,255,0.7)";
+    ctx.shadowColor="var(--neon-blue)";
+    ctx.shadowBlur=12;
+    ctx.fill();
+
+    p.x+=p.dx;
+    p.y+=p.dy;
+
+    if(p.x<0)p.x=canvas.width;
+    if(p.x>canvas.width)p.x=0;
+    if(p.y<0)p.y=canvas.height;
+    if(p.y>canvas.height)p.y=0;
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+</script>
+
+</body>
+</html>
