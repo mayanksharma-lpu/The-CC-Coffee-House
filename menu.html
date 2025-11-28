@@ -212,22 +212,69 @@ footer{
     font-size:2rem;
   }
 }
+/* Mobile hamburger */
+#menu-btn {
+  display:none;
+  font-size:1.7rem;
+  cursor:pointer;
+}
+
+/* Mobile menu behavior */
+@media(max-width:768px){
+  nav{ 
+    position:fixed;
+    right:-120%;
+    top:75px;
+    width:220px;
+    padding:20px;
+    backdrop-filter: blur(12px);
+    background:rgba(255,255,255,0.09);
+    border-left:1px solid rgba(255,255,255,0.2);
+    transition:.3s;
+    flex-direction:column;
+  }
+
+  nav.show{ right:0%; }
+
+  nav a{
+    margin:12px 0;
+    width:100%;
+    text-align:center;
+    display:block;
+  }
+
+  #menu-btn{ display:block; }
+}
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
+
 <header>
-    <img src="images/cafe logo.jpg">
-    <ul>
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="menu.html" class="active-link">MENU</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
-        <li><a href="RATING.html">RATE US</a> </li>
-    </ul>
-    <a href="login.html" class="login-btn"><i class="fa-solid fa-user"></i> Login</a>
+  <!-- Logo -->
+  <div class="logo">
+    <img src="images/cafe logo.jpg" alt="CC Coffee House Logo">
+  </div>
+
+  <!-- Hamburger icon for mobile -->
+  <i id="menu-btn" class="fas fa-bars"></i>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html">HOME</a>
+    <a href="about.html">ABOUT</a>
+    <a href="menu.html">MENU</a>
+    <a href="contact.html">CONTACT</a>
+    <a href="rating.html">RATE US</a>
+  </nav>
+
+  <!-- Login button -->
+  <a href="login.html" class="login-btn">
+    <i class="fa-solid fa-user"></i> Login
+  </a>
 </header>
+
 
 <!-- COFFEE SECTION -->
 <h2 data-aos="fade-up">Coffee</h2>
@@ -313,6 +360,7 @@ function placeOrder(){
   for(const item in cart) delete cart[item];
   updateCart();
 }
+
 </script>
 
 
@@ -346,6 +394,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 </script>
+<script>
+const menuBtn = document.getElementById("menu-btn");
+const nav = document.querySelector("nav");
+
+menuBtn.onclick = () => nav.classList.toggle("show");
+</script>
+
 
 </body>
 </html>
