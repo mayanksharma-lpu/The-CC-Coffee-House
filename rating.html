@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Us & Reviews | The CC Coffee House</title>
+    <meta name="description" content="Share your CC Coffee House experience. Read real guest reviews and help us improve our coffee, food, and ambience.">
+
+    <!-- Favicon & Social Meta -->
+    <link rel="icon" type="image/jpeg" href="images/cafe logo.jpg">
+    <meta property="og:title" content="Rate Us & Reviews | The CC Coffee House">
+    <meta property="og:description" content="Share your CC Coffee House experience. Read real guest reviews on our artisan coffee, food, and aesthetic ambience.">
+    <meta property="og:image" content="images/cafe logo.jpg">
+    <meta property="og:type" content="website">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* ─── Rating-page specific ─── */
+        .score-card {
+            text-align: center; padding: 40px 30px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+        }
+        .score-card .score-label {
+            font-size: 0.80rem; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 2px; font-weight: 700;
+        }
+        .score-card .big-score {
+            font-size: 5.5rem; font-weight: 900; line-height: 1;
+            background: linear-gradient(135deg, var(--terracotta), var(--gold));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin: 14px 0;
+            filter: drop-shadow(0 0 20px rgba(224,122,95,0.35));
+        }
+        .stars-display {
+            display: flex; gap: 6px;
+            color: var(--gold); font-size: 1.5rem; margin-bottom: 12px;
+        }
+        .review-meta { font-size: 0.88rem; color: var(--text-muted); }
+
+        /* Review card premium */
+        .review-card-inner {
+            position: relative;
+        }
+        .review-card-inner .verified-badge {
+            position: absolute; top: -1px; right: 16px;
+            background: rgba(34,197,94,0.14); border: 1px solid rgba(34,197,94,0.30);
+            color: var(--green-accent);
+            padding: 3px 10px; border-radius: 0 0 10px 10px;
+            font-size: 0.70rem; font-weight: 800; text-transform: uppercase; letter-spacing: .8px;
+        }
+
+        /* Feature badges on rating form */
+        .rate-feature-grid {
+            display: grid; grid-template-columns: repeat(2,1fr); gap: 12px;
+            margin: 18px 0;
+        }
+        .rate-feature-btn {
+            padding: 12px 14px; border-radius: 14px;
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            color: var(--text-body); font-size: 0.82rem; font-weight: 600;
+            cursor: pointer; transition: var(--ease-fast); text-align: center;
+            display: flex; align-items: center; gap: 8px; justify-content: center;
+        }
+        .rate-feature-btn.selected, .rate-feature-btn:hover {
+            background: rgba(224,122,95,0.18);
+            border-color: var(--terracotta); color: var(--terracotta);
+        }
+        .rate-feature-btn i { font-size: 1rem; }
+    </style>
+</head>
+<body>
+
+    <!-- ── PAGE PRELOADER ── -->
+    <div id="page-preloader">
+        <img src="images/cafe logo.jpg" alt="CC Coffee House" class="preloader-logo">
+        <p class="preloader-brand-name">CC Coffee House</p>
+        <div class="preloader-bar-track">
+            <div class="preloader-bar-fill"></div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="navbar-header" id="main-navbar">
+        <a href="index.html" class="brand-logo">
+            <img src="images/cafe logo.jpg" alt="CC Coffee House Logo">
+            <div>
+                <span class="brand-name">CC Coffee House</span>
+                <span class="brand-tagline">Artisan Roasters • Est. 1999</span>
+            </div>
+        </a>
+        <div class="status-badge-pill">
+            <span class="status-dot"></span> Open Now · 8 AM – 12 AM
+        </div>
+        <i class="fa-solid fa-bars mobile-toggle" id="menu-toggle-btn"></i>
+        <nav class="nav-links" id="nav-links">
+            <a href="index.html"   class="nav-link-item">HOME</a>
+            <a href="menu.html"    class="nav-link-item">MENU</a>
+            <a href="about.html"   class="nav-link-item">ABOUT</a>
+            <a href="contact.html" class="nav-link-item">CONTACT</a>
+            <a href="rating.html"  class="nav-link-item active">RATE US</a>
+        </nav>
+        <div class="header-actions">
+            <button class="cart-trigger-btn" onclick="toggleCartDrawer(true)" title="View Cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge" style="display:none;">0</span>
+            </button>
+            <div id="header-auth-btn">
+                <a href="login.html" class="btn-primary" style="padding:9px 22px;font-size:0.84rem;">
+                    <i class="fa-solid fa-user"></i> Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HERO BANNER -->
+    <section class="page-hero-banner">
+        <span class="badge-tag" data-aos="fade-down">
+            <i class="fa-solid fa-star"></i> COMMUNITY REVIEWS & FEEDBACK
+        </span>
+        <h1 class="hero-title" data-aos="fade-up" style="font-size:clamp(2.6rem,5.5vw,4.5rem);margin-top:8px;">
+            Rate Your Experience
+        </h1>
+        <p class="section-desc" data-aos="fade-up" data-aos-delay="100" style="max-width:600px;margin:20px auto 0;">
+            Your feedback helps us continuously elevate our coffee craft, service quality, and café ambience. Every review counts!
+        </p>
+    </section>
+
+    <!-- RATING DASHBOARD -->
+    <section style="padding: 20px 6% 70px 6%;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;" data-aos="fade-up">
+
+            <!-- OVERALL SCORE CARD -->
+            <div class="glass-card tilt-card score-card">
+                <span class="score-label">Average Guest Score</span>
+                <div class="big-score" id="avg-score-number">4.9</div>
+                <div class="stars-display">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-meta" id="total-reviews-text">Based on <strong style="color:var(--text-body);">128</strong> verified customer reviews</p>
+                <div style="margin-top:20px;display:flex;gap:16px;">
+                    <div style="text-align:center;">
+                        <div style="font-size:1.4rem;font-weight:800;color:var(--matcha);">98%</div>
+                        <div style="font-size:0.74rem;color:var(--text-muted);text-transform:uppercase;">Would Return</div>
+                    </div>
+                    <div style="width:1px;background:var(--glass-border);"></div>
+                    <div style="text-align:center;">
+                        <div style="font-size:1.4rem;font-weight:800;color:var(--amber);">96%</div>
+                        <div style="font-size:0.74rem;color:var(--text-muted);text-transform:uppercase;">Recommend</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BREAKDOWN PROGRESS BARS -->
+            <div class="glass-card tilt-card" style="padding:36px;">
+                <h3 style="font-size:1.3rem;margin-bottom:24px;color:var(--amber);">
+                    <i class="fa-solid fa-chart-bar" style="margin-right:8px;"></i>Rating Distribution
+                </h3>
+                <div class="rating-bar-container">
+                    <span style="color:var(--gold);width:38px;">5 ★</span>
+                    <div class="rating-bar-bg"><div class="rating-bar-fill" style="width:88%;"></div></div>
+                    <span style="width:36px;text-align:right;font-weight:700;color:var(--text-heading);">88%</span>
+                </div>
+                <div class="rating-bar-container">
+                    <span style="color:var(--gold);width:38px;">4 ★</span>
+                    <div class="rating-bar-bg"><div class="rating-bar-fill" style="width:9%;background:linear-gradient(90deg,var(--matcha),#4A8A6E);"></div></div>
+                    <span style="width:36px;text-align:right;font-weight:700;color:var(--text-heading);">9%</span>
+                </div>
+                <div class="rating-bar-container">
+                    <span style="color:var(--gold);width:38px;">3 ★</span>
+                    <div class="rating-bar-bg"><div class="rating-bar-fill" style="width:2%;background:linear-gradient(90deg,var(--amber),var(--gold));"></div></div>
+                    <span style="width:36px;text-align:right;font-weight:700;color:var(--text-heading);">2%</span>
+                </div>
+                <div class="rating-bar-container">
+                    <span style="color:var(--gold);width:38px;">2 ★</span>
+                    <div class="rating-bar-bg"><div class="rating-bar-fill" style="width:1%;background:linear-gradient(90deg,var(--berry),var(--terracotta));"></div></div>
+                    <span style="width:36px;text-align:right;font-weight:700;color:var(--text-heading);">1%</span>
+                </div>
+                <div class="rating-bar-container">
+                    <span style="color:var(--gold);width:38px;">1 ★</span>
+                    <div class="rating-bar-bg"><div class="rating-bar-fill" style="width:0%;"></div></div>
+                    <span style="width:36px;text-align:right;font-weight:700;color:var(--text-heading);">0%</span>
+                </div>
+
+                <!-- Category mini scores -->
+                <div style="margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center;">
+                    <div>
+                        <div style="font-size:1.3rem;font-weight:800;color:var(--terracotta);">4.9</div>
+                        <div style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;">Coffee</div>
+                    </div>
+                    <div>
+                        <div style="font-size:1.3rem;font-weight:800;color:var(--matcha);">4.8</div>
+                        <div style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;">Ambience</div>
+                    </div>
+                    <div>
+                        <div style="font-size:1.3rem;font-weight:800;color:var(--amber);">4.9</div>
+                        <div style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;">Service</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUBMIT REVIEW FORM -->
+            <div class="glass-card tilt-card" style="padding:36px;position:relative;">
+                <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--terracotta),var(--amber),var(--matcha));border-radius:28px 28px 0 0;"></div>
+                <h3 style="font-size:1.3rem;color:var(--terracotta);margin-bottom:6px;">
+                    <i class="fa-solid fa-pen-to-square" style="margin-right:8px;"></i>Leave Your Review
+                </h3>
+                <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:4px;">Select your rating and share your experience.</p>
+
+                <form onsubmit="handleReviewSubmit(event)" style="margin-top:16px;">
+                    <!-- Star selector -->
+                    <div class="star-rating-select" id="star-selector">
+                        <i class="fa-solid fa-star active" onclick="selectStars(1)"></i>
+                        <i class="fa-solid fa-star active" onclick="selectStars(2)"></i>
+                        <i class="fa-solid fa-star active" onclick="selectStars(3)"></i>
+                        <i class="fa-solid fa-star active" onclick="selectStars(4)"></i>
+                        <i class="fa-solid fa-star active" onclick="selectStars(5)"></i>
+                    </div>
+                    <div class="mood-emoji-text" id="mood-text">😍 Outstanding Experience!</div>
+
+                    <!-- Feature tags -->
+                    <div style="font-size:0.80rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">What did you enjoy?</div>
+                    <div class="rate-feature-grid" id="feature-grid">
+                        <button type="button" class="rate-feature-btn" onclick="toggleFeature(this)">
+                            <i class="fa-solid fa-mug-hot"></i> Coffee Quality
+                        </button>
+                        <button type="button" class="rate-feature-btn" onclick="toggleFeature(this)">
+                            <i class="fa-solid fa-couch"></i> Ambience
+                        </button>
+                        <button type="button" class="rate-feature-btn" onclick="toggleFeature(this)">
+                            <i class="fa-solid fa-utensils"></i> Food & Snacks
+                        </button>
+                        <button type="button" class="rate-feature-btn" onclick="toggleFeature(this)">
+                            <i class="fa-solid fa-heart"></i> Staff Service
+                        </button>
+                    </div>
+
+                    <div class="form-group" style="margin-top:4px;">
+                        <input type="text" id="reviewer-name" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="reviewer-comment" class="form-control" rows="3"
+                            placeholder="Tell us about your coffee experience, food, or ambience..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width:100%;padding:14px;">
+                        Submit Review <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE REVIEWS FEED -->
+    <section class="section" style="padding-top:10px;">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">VOICES OF OUR GUESTS</span>
+            <h2 class="section-title">Recent Reviews</h2>
+            <div style="display:flex;justify-content:center;gap:12px;margin-top:18px;flex-wrap:wrap;">
+                <button class="filter-chip-sm active" onclick="filterReviews('all',this)">All Reviews</button>
+                <button class="filter-chip-sm" onclick="filterReviews(5,this)">⭐ 5 Star</button>
+                <button class="filter-chip-sm" onclick="filterReviews(4,this)">⭐ 4 Star</button>
+            </div>
+        </div>
+        <div class="grid-cards" id="reviews-feed"></div>
+    </section>
+
+    <!-- CART DRAWER -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay" onclick="if(event.target===this) toggleCartDrawer(false)">
+        <div class="cart-drawer">
+            <div class="cart-drawer-header">
+                <h2><i class="fa-solid fa-basket-shopping"></i> Your Coffee Cart</h2>
+                <button class="close-drawer-btn" onclick="toggleCartDrawer(false)">&times;</button>
+            </div>
+            <div class="cart-items-body" id="cart-drawer-items"></div>
+            <div class="cart-drawer-footer">
+                <div class="cart-summary-line"><span>Subtotal</span><span id="cart-subtotal">₹0</span></div>
+                <div class="cart-summary-line total"><span>Total Amount</span><span id="cart-total">₹0</span></div>
+                <button class="btn-primary checkout-btn" onclick="openCheckoutModal()">
+                    Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="modal-overlay" id="checkout-modal-overlay" onclick="if(event.target===this) closeCheckoutModal()">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-credit-card"></i> Order Checkout</h3>
+                <button class="close-drawer-btn" onclick="closeCheckoutModal()">&times;</button>
+            </div>
+            <form onsubmit="processCheckoutOrder(event)">
+                <div class="form-group"><label>Full Name</label><input type="text" id="cust-name" class="form-control" placeholder="John Doe" required></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" class="form-control" placeholder="+91 98765 43210" required></div>
+                <div class="form-group"><label>Delivery Address / Table No.</label><textarea class="form-control" placeholder="Enter full address or table number" required></textarea></div>
+                <div class="form-group"><label>Payment Method</label>
+                    <select class="form-control">
+                        <option value="upi">UPI / GPay / PhonePe</option>
+                        <option value="card">Credit / Debit Card</option>
+                        <option value="cod">Cash on Delivery / Pay at Counter</option>
+                    </select>
+                </div>
+                <div style="margin:20px 0;font-size:1.1rem;font-weight:800;color:var(--terracotta);text-align:right;">
+                    Amount Payable: <span id="modal-order-total">₹0</span>
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%;padding:15px;">Confirm & Place Order <i class="fa-solid fa-check"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo">
+                    <img src="images/cafe logo.jpg" alt="CC Coffee Logo">
+                    <span class="brand-name">CC Coffee House</span>
+                </a>
+                <p>Serving artisan coffee, delicious snacks, and unforgettable atmosphere since 1999.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com" class="social-link" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://facebook.com" class="social-link" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="mailto:contact@xyzcafe.com" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://wa.me/" class="social-link" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Full Menu</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="rating.html">Rate Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Café Hours</h4>
+                <ul>
+                    <li>Mon – Fri: 8:00 AM – 11:00 PM</li>
+                    <li>Sat – Sun: 8:00 AM – 12:00 AM</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot" style="color:var(--terracotta);"></i> XYZ Commercial Complex, City</li>
+                    <li><i class="fa-solid fa-phone" style="color:var(--terracotta);"></i> +XX XYZ-XYZ-XYZ</li>
+                    <li><i class="fa-solid fa-envelope" style="color:var(--terracotta);"></i> contact@xyzcafe.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 The CC Coffee House. Crafted with <span>♥</span> for coffee lovers.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 900, once: true, offset: 60 });</script>
+    <script src="js/main.js"></script>
+
+    <script>
+        let selectedStarsCount = 5;
+        let activeFilter = 'all';
+
+        const moods = {
+            1: '😠 Poor Experience — Sorry to hear that.',
+            2: '😐 Below Average — We can do better.',
+            3: '🙂 Good Visit — Room for improvement.',
+            4: '😊 Great Experience — Thank you!',
+            5: '😍 Outstanding Experience — You made our day!'
+        };
+
+        const initialReviews = [
+            { name: 'Siddharth Malhotra', stars: 5, comment: 'The Paneer Sandwich and Hazelnut Latte here are unmatched! Warm aesthetic seating makes it a 10/10 hangout spot.', date: '2 days ago', initial: 'S', color: 'var(--terracotta)' },
+            { name: 'Neha Gupta',         stars: 5, comment: 'Piping hot Cappuccino served with delicious Belgian Waffle. Super friendly staff and gorgeous café vibe!', date: '5 days ago', initial: 'N', color: 'var(--matcha)' },
+            { name: 'Karan Mehra',        stars: 4, comment: 'Great coffee quality and vibrant cozy vibe. Will definitely return for the party hall event booking!', date: '1 week ago', initial: 'K', color: 'var(--amber)' }
+        ];
+
+        let storedReviews = JSON.parse(localStorage.getItem('cc_reviews_list') || JSON.stringify(initialReviews));
+
+        function updateReviewStats() {
+            const countEl = document.getElementById('total-reviews-text');
+            const scoreEl = document.getElementById('avg-score-number');
+            if (storedReviews.length > 0) {
+                const totalStars = storedReviews.reduce((sum, r) => sum + Number(r.stars), 0);
+                const avg = (totalStars / storedReviews.length).toFixed(1);
+                if (scoreEl) scoreEl.textContent = avg;
+                if (countEl) countEl.innerHTML = `Based on <strong style="color:var(--text-body);">${125 + storedReviews.length}</strong> verified customer reviews`;
+            }
+        }
+
+        function selectStars(count) {
+            selectedStarsCount = count;
+            const stars = document.querySelectorAll('#star-selector i');
+            const moodEl = document.getElementById('mood-text');
+            stars.forEach((s, idx) => {
+                s.classList.toggle('active', idx < count);
+            });
+            if (moodEl) moodEl.textContent = moods[count];
+        }
+
+        // Star Hover Effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const starIcons = document.querySelectorAll('#star-selector i');
+            starIcons.forEach((star, index) => {
+                star.addEventListener('mouseenter', () => {
+                    starIcons.forEach((s, i) => s.classList.toggle('active', i <= index));
+                    const moodEl = document.getElementById('mood-text');
+                    if (moodEl) moodEl.textContent = moods[index + 1];
+                });
+            });
+
+            const starContainer = document.getElementById('star-selector');
+            if (starContainer) {
+                starContainer.addEventListener('mouseleave', () => {
+                    selectStars(selectedStarsCount);
+                });
+            }
+
+            updateReviewStats();
+        });
+
+        function toggleFeature(btn) { btn.classList.toggle('selected'); }
+
+        function filterReviews(val, btn) {
+            activeFilter = val;
+            document.querySelectorAll('.filter-chip-sm').forEach(c => c.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+            renderReviews();
+        }
+
+        function handleReviewSubmit(event) {
+            event.preventDefault();
+            const name    = document.getElementById('reviewer-name').value;
+            const comment = document.getElementById('reviewer-comment').value;
+            const colors  = ['var(--terracotta)', 'var(--matcha)', 'var(--amber)', 'var(--gold)', 'var(--berry)'];
+            const color   = colors[Math.floor(Math.random() * colors.length)];
+
+            storedReviews.unshift({ name, stars: selectedStarsCount, comment, date: 'Just now', initial: name[0].toUpperCase(), color });
+            localStorage.setItem('cc_reviews_list', JSON.stringify(storedReviews));
+
+            showToast(`Thank you ${name}! Your ${selectedStarsCount}-star review has been posted. ⭐`, 'success');
+            event.target.reset();
+            selectStars(5);
+            updateReviewStats();
+            renderReviews();
+        }
+
+        function renderReviews() {
+            const feed = document.getElementById('reviews-feed');
+            if (!feed) return;
+
+            const filtered = storedReviews.filter(r => activeFilter === 'all' || r.stars === Number(activeFilter));
+
+            if (filtered.length === 0) {
+                feed.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:40px 0;">No reviews found for this filter.</p>`;
+                return;
+            }
+
+            const starStr = count => '<i class="fa-solid fa-star"></i>'.repeat(count);
+
+            feed.innerHTML = filtered.map(r => `
+                <div class="glass-card tilt-card" data-aos="fade-up" style="position:relative;">
+                    <div style="display:flex;gap:4px;color:var(--gold);font-size:1rem;margin-bottom:14px;">${starStr(r.stars)}</div>
+                    <p style="font-style:italic;margin-bottom:20px;color:var(--text-body);font-size:0.97rem;line-height:1.75;">"${r.comment}"</p>
+                    <div style="display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.07);">
+                        <div style="width:38px;height:38px;border-radius:50%;background:${r.color || 'var(--terracotta)'};display:flex;align-items:center;justify-content:center;font-weight:800;color:#050810;font-size:1.05rem;flex-shrink:0;">${r.initial || r.name[0]}</div>
+                        <div>
+                            <h4 style="color:${r.color || 'var(--terracotta)'};font-size:0.96rem;margin:0;">${r.name}</h4>
+                            <span style="font-size:0.76rem;color:var(--text-muted);">${r.date} · Verified Guest ✓</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        renderReviews();
+    </script>
+</body>
+</html>

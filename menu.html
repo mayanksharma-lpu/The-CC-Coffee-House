@@ -1,407 +1,701 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The CC Coffee House | Menu</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Menu | The CC Coffee House – Coffees, Snacks & Desserts</title>
+    <meta name="description" content="Browse the full CC Coffee House menu — artisan espresso coffees, cold brews, gourmet snacks, pastries and desserts. Order online for delivery or dine-in.">
 
-<!-- Icons + AOS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+    <!-- Favicon & Social Meta -->
+    <link rel="icon" type="image/jpeg" href="images/cafe logo.jpg">
+    <meta property="og:title" content="Full Menu | The CC Coffee House">
+    <meta property="og:description" content="Artisan espresso, cold brews, teas, garlic bread, gourmet pizzas, pastries, and waffles. Order online for delivery.">
+    <meta property="og:image" content="images/cafe logo.jpg">
+    <meta property="og:type" content="website">
 
-<style>
-/* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:"Poppins",sans-serif;
-}
+    <!-- FontAwesome + AOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
 
-body{
-  background:#080d1a;
-  color:white;
-  overflow-x:hidden;
-}
+    <!-- Master Aesthetic Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
 
-/* NEON COLORS */
-:root{
-  --neon-gold:#ffdf59;
-  --neon-blue:#50c8ff;
-  --glass-bg:rgba(255,255,255,0.05);
-}
-
-/* HEADER */
-header{
-  position:fixed;
-  top:0; left:0; right:0;
-  padding:18px 50px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  backdrop-filter:blur(10px);
-  background:rgba(255,255,255,0.06);
-  border-bottom:1px solid rgba(255,255,255,0.2);
-  z-index:1000;
-}
-
-header img{
-  width:160px;
-  filter:drop-shadow(0 0 12px var(--neon-gold));
-}
-
-header ul{
-  display:flex;
-  gap:18px;
-}
-
-header a{
-  color:white;
-  text-decoration:none;
-  padding:8px 20px;
-  background:rgba(255,255,255,0.1);
-  border-radius:20px;
-  transition:.3s;
-}
-
-header a:hover,
-.active-link{
-  background:var(--neon-gold);
-  color:black;
-  box-shadow:0 0 14px var(--neon-gold);
-}
-
-/* CATEGORY TITLES */
-h2{
-  text-align:center;
-  margin-top:170px;
-  margin-bottom:40px;
-  font-size:2.8rem;
-  color:var(--neon-gold);
-  text-shadow:0 0 20px black;
-}
-
-/* PRODUCTS GRID */
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:35px;
-  width:90%;
-  margin:0 auto 60px auto;
-}
-
-/* PRODUCT CARD */
-.product{
-  background:var(--glass-bg);
-  border:1px solid rgba(255,255,255,0.15);
-  border-radius:18px;
-  padding:20px;
-  text-align:center;
-  backdrop-filter:blur(8px);
-  transition:.3s;
-}
-
-.product:hover{
-  transform:translateY(-10px);
-  box-shadow:0 0 20px var(--neon-gold);
-}
-
-.product img{
-  width:200px;
-  height:140px;
-  object-fit:cover;
-  border-radius:12px;
-  filter:drop-shadow(0 0 10px var(--neon-blue));
-  animation:float 3.5s ease-in-out infinite;
-}
-
-@keyframes float{
-  0%,100%{ transform:translateY(0); }
-  50%{ transform:translateY(-10px); }
-}
-
-.product h3{
-  margin-top:12px;
-  font-size:1.4rem;
-  color:var(--neon-gold);
-}
-
-.product p{
-  margin:5px 0 12px 0;
-  font-size:1.1rem;
-}
-
-/* BUTTONS */
-button{
-  margin-top:6px;
-  padding:9px 20px;
-  border:none;
-  border-radius:25px;
-  font-size:1rem;
-  cursor:pointer;
-  background:var(--neon-gold);
-  color:black;
-  font-weight:600;
-  transition:.3s;
-}
-
-button:hover{
-  transform:scale(1.08);
-  box-shadow:0 0 15px var(--neon-gold);
-}
-
-/* CART */
-.cart{
-  width:90%;
-  margin:40px auto 80px auto;
-  padding:25px;
-  background:var(--glass-bg);
-  border:1px solid rgba(255,255,255,0.15);
-  border-radius:18px;
-  backdrop-filter:blur(8px);
-  box-shadow:0 0 15px rgba(255,255,255,0.08);
-}
-
-.cart h2{
-  text-align:center;
-  margin-bottom:20px;
-}
-
-#cart-items li{
-  margin:10px 0;
-  font-size:1.2rem;
-}
-
-#place-order{
-  display:block;
-  margin:20px auto 0 auto;
-  background:#00e07d;
-  color:black;
-}
-#place-order:hover{
-  box-shadow:0 0 15px #00e07d;
-}
-
-#thank-you{
-  text-align:center;
-  margin-top:15px;
-  font-size:1.4rem;
-  color:#00ff99;
-  text-shadow:0 0 10px #00ff99;
-}
-
-/* FOOTER */
-footer{
-  margin-top:60px;
-  padding:20px;
-  text-align:center;
-  background:#090d17;
-  border-top:1px solid rgba(255,255,255,0.15);
-}
-
-/* MOBILE RESPONSIVE */
-@media(max-width:900px){
-  .products{
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  }
-  .product img{
-    width:95%;
-    height:auto;
-  }
-  h2{
-    font-size:2rem;
-  }
-}
-/* Mobile hamburger */
-#menu-btn {
-  display:none;
-  font-size:1.7rem;
-  cursor:pointer;
-}
-
-/* Mobile menu behavior */
-@media(max-width:768px){
-  nav{ 
-    position:fixed;
-    right:-120%;
-    top:75px;
-    width:220px;
-    padding:20px;
-    backdrop-filter: blur(12px);
-    background:rgba(255,255,255,0.09);
-    border-left:1px solid rgba(255,255,255,0.2);
-    transition:.3s;
-    flex-direction:column;
-  }
-
-  nav.show{ right:0%; }
-
-  nav a{
-    margin:12px 0;
-    width:100%;
-    text-align:center;
-    display:block;
-  }
-
-  #menu-btn{ display:block; }
-}
-</style>
+    <style>
+        /* Menu page — guarantee cards always visible */
+        #menu-product-grid .product-card {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: none !important;
+        }
+        #menu-product-grid .product-card:hover {
+            transform: translateY(-10px) scale(1.02) !important;
+        }
+        /* Menu section label strip */
+        .menu-section-label {
+            grid-column: 1 / -1;
+            display: flex; align-items: center; gap: 14px;
+            padding: 8px 0 4px;
+        }
+        .menu-section-label span {
+            font-size: 0.80rem; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 2.5px;
+            color: var(--terracotta);
+            background: rgba(224,122,95,0.12);
+            border: 1px solid rgba(224,122,95,0.28);
+            padding: 5px 14px; border-radius: 30px;
+        }
+        .menu-section-label::after {
+            content: ''; flex: 1; height: 1px;
+            background: linear-gradient(90deg, rgba(224,122,95,0.35), transparent);
+        }
+    </style>
 </head>
 <body>
 
-<!-- HEADER -->
+    <!-- ── PAGE PRELOADER ── -->
+    <div id="page-preloader">
+        <img src="images/cafe logo.jpg" alt="CC Coffee House" class="preloader-logo">
+        <p class="preloader-brand-name">CC Coffee House</p>
+        <div class="preloader-bar-track">
+            <div class="preloader-bar-fill"></div>
+        </div>
+    </div>
 
-<header>
-  <!-- Logo -->
-  <div class="logo">
-    <img src="images/cafe logo.jpg" alt="CC Coffee House Logo">
-  </div>
+    <!-- AGENCY FLOATING PILL NAVBAR HEADER -->
+    <header class="navbar-header">
+        <a href="index.html" class="brand-logo">
+            <img src="images/cafe logo.jpg" alt="CC Coffee House Logo">
+            <div>
+                <span class="brand-name">CC Coffee House</span>
+                <span class="brand-tagline">Artisan Roasters • Est. 1999</span>
+            </div>
+        </a>
 
-  <!-- Hamburger icon for mobile -->
-  <i id="menu-btn" class="fas fa-bars"></i>
+        <div class="status-badge-pill">
+            <span class="status-dot"></span> Open Now · 8 AM – 12 AM
+        </div>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html">HOME</a>
-    <a href="about.html">ABOUT</a>
-    <a href="menu.html">MENU</a>
-    <a href="contact.html">CONTACT</a>
-    <a href="RATING.html">RATE US</a>
-  </nav>
+        <i class="fa-solid fa-bars mobile-toggle" id="menu-toggle-btn"></i>
 
-  <!-- Login button -->
-  <a href="login.html" class="login-btn">
-    <i class="fa-solid fa-user"></i> Login
-  </a>
-</header>
+        <nav class="nav-links" id="nav-links">
+            <a href="index.html" class="nav-link-item">HOME</a>
+            <a href="menu.html" class="nav-link-item active">MENU</a>
+            <a href="about.html" class="nav-link-item">ABOUT</a>
+            <a href="contact.html" class="nav-link-item">CONTACT</a>
+            <a href="rating.html" class="nav-link-item">RATE US</a>
+        </nav>
 
+        <div class="header-actions">
+            <button class="cart-trigger-btn" onclick="toggleCartDrawer(true)" title="View Cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge" style="display:none;">0</span>
+            </button>
 
-<!-- COFFEE SECTION -->
-<h2 data-aos="fade-up">Coffee</h2>
-<div class="products">
-  <div class="product" data-aos="fade-up"><img src="menu pic/americano.jpg"><h3>Americano</h3><p>₹110</p><button onclick="addToCart('Americano', 110)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="100"><img src="menu pic/espresso.jpg"><h3>Espresso</h3><p>₹100</p><button onclick="addToCart('Espresso', 100)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="200"><img src="menu pic/mocha cff.jpg"><h3>Mocha</h3><p>₹150</p><button onclick="addToCart('Mocha', 150)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="300"><img src="menu pic/frappe coffe.jpg"><h3>Frappe</h3><p>₹179</p><button onclick="addToCart('Frappe', 179)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="400"><img src="menu pic/cappuccino.jpg"><h3>Cappuccino</h3><p>₹90</p><button onclick="addToCart('Cappuccino', 90)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="500"><img src="menu pic/hot choc cff.jpg"><h3>Hot Choco</h3><p>₹80</p><button onclick="addToCart('Hot Choco', 80)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="600"><img src="menu pic/cold coffe.jpg"><h3>Cold Coffee</h3><p>₹80</p><button onclick="addToCart('Cold Coffee', 80)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="700"><img src="menu pic/iced coffe.jpg"><h3>Iced Coffee</h3><p>₹60</p><button onclick="addToCart('Iced Coffee', 60)">Add to Cart</button></div>
-</div>
+            <div id="header-auth-btn">
+                <a href="login.html" class="btn-primary" style="padding:9px 22px;font-size:0.84rem;">
+                    <i class="fa-solid fa-user"></i> Login
+                </a>
+            </div>
+        </div>
+    </header>
 
-<!-- TEA SECTION -->
-<h2 data-aos="fade-up">Special Tea</h2>
-<div class="products">
-  <div class="product" data-aos="fade-up"><img src="menu pic/ice tea.jpg"><h3>Ice Tea</h3><p>₹55</p><button onclick="addToCart('Ice Tea', 55)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="100"><img src="menu pic/milk tea.jpg"><h3>Milk Tea</h3><p>₹50</p><button onclick="addToCart('Milk Tea', 50)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="200"><img src="menu pic/lemon tea.jpg"><h3>Lemon Tea</h3><p>₹65</p><button onclick="addToCart('Lemon Tea', 65)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="300"><img src="menu pic/matcha latte.jpg"><h3>Matcha Tea</h3><p>₹85</p><button onclick="addToCart('Matcha Tea', 85)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="400"><img src="menu pic/gud tea.jpg"><h3>Guud Chai</h3><p>₹60</p><button onclick="addToCart('Guud Chai', 60)">Add to Cart</button></div>
-</div>
+    <!-- PAGE HERO BANNER -->
+    <section class="page-hero-banner">
+        <span class="badge-tag" data-aos="fade-down">
+            <i class="fa-solid fa-utensils"></i> CURATED ARTISANAL MENU
+        </span>
+        <h1 class="hero-title" data-aos="fade-up" style="font-size:clamp(2.6rem,5.5vw,4.5rem);margin-top:8px;">Our Café Menu</h1>
+        <p class="section-desc" data-aos="fade-up" data-aos-delay="100" style="max-width:620px;margin:20px auto 0;">
+            Handcrafted espresso coffees, cold brews, infused teas, crispy gourmet snacks, and fresh bakery treats.
+        </p>
+    </section>
 
-<!-- SNACKS SECTION -->
-<h2 data-aos="fade-up">Snacks</h2>
-<div class="products">
-  <div class="product" data-aos="fade-up"><img src="menu pic/french fries.jpg"><h3>French Fries</h3><p>₹50</p><button onclick="addToCart('French Fries', 50)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="100"><img src="menu pic/peri peri.jpg"><h3>Peri Peri Fries</h3><p>₹85</p><button onclick="addToCart('Peri Peri Fries', 85)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="200"><img src="menu pic/bun maska.jpg"><h3>Bun Maska</h3><p>₹65</p><button onclick="addToCart('Bun Maska', 65)">Add to Cart</button></div>
-  <div class="product" data-aos="fade-up" data-aos-delay="300"><img src="menu pic/garlic bread.jpg"><h3>Garlic Bread</h3><p>₹110</p><button onclick="addToCart('Garlic Bread', 110)">Add to Cart</button></div>
-</div>
+    <!-- ANNOUNCEMENT MARQUEE TICKER -->
+    <div class="ticker-wrap" style="margin-bottom:40px;">
+        <div class="ticker">
+            <div class="ticker-item"><i class="fa-solid fa-sparkles" style="color:var(--gold);"></i> 15% OFF YOUR FIRST ONLINE ORDER</div>
+            <div class="ticker-item"><i class="fa-solid fa-fire" style="color:var(--terracotta);"></i> FRESHLY ROASTED ETHIOPIAN ARABICA BEANS</div>
+            <div class="ticker-item"><i class="fa-solid fa-champagne-glasses" style="color:var(--matcha);"></i> PRIVATE PARTY HALL BOOKINGS OPEN</div>
+            <div class="ticker-item"><i class="fa-solid fa-truck-fast" style="color:var(--amber);"></i> EXPRESS 30-MIN LOCAL DELIVERY</div>
+            <div class="ticker-item"><i class="fa-solid fa-mug-hot" style="color:var(--gold);"></i> NEW: HAZELNUT COLD BREW — TRY IT TODAY</div>
+            <div class="ticker-item"><i class="fa-solid fa-sparkles" style="color:var(--gold);"></i> 15% OFF YOUR FIRST ONLINE ORDER</div>
+            <div class="ticker-item"><i class="fa-solid fa-fire" style="color:var(--terracotta);"></i> FRESHLY ROASTED ETHIOPIAN ARABICA BEANS</div>
+            <div class="ticker-item"><i class="fa-solid fa-champagne-glasses" style="color:var(--matcha);"></i> PRIVATE PARTY HALL BOOKINGS OPEN</div>
+        </div>
+    </div>
 
-<!-- CART -->
-<div class="cart" data-aos="fade-up">
-  <h2>Your Cart</h2>
-  <ul id="cart-items"></ul>
-  <div id="total">Total: ₹0</div>
-  <button id="place-order" onclick="placeOrder()">Place Order</button>
-</div>
-<div id="thank-you"></div>
+    <!-- CONTROLS: SEARCH & CATEGORY FILTERS -->
+    <section style="padding: 0 6% 60px 6%;">
+        <div class="menu-controls">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="menu-search-input" placeholder="Search coffee, tea, fries, waffles, sandwiches..." oninput="filterMenuItems()" onkeyup="filterMenuItems()">
+                <i class="fa-solid fa-xmark" id="clear-search-btn" style="left:auto; right:20px; cursor:pointer; display:none;" onclick="clearSearchInput()"></i>
+            </div>
 
-<!-- CART SCRIPT -->
-<script>
-const cart = {};
-let total = 0;
+            <div class="category-tabs">
+                <button class="cat-pill active" onclick="filterCategory('all', this)">All Items (17)</button>
+                <button class="cat-pill" onclick="filterCategory('coffee', this)">☕ Coffee (5)</button>
+                <button class="cat-pill" onclick="filterCategory('snack', this)">🍟 Gourmet Snacks (5)</button>
+                <button class="cat-pill" onclick="filterCategory('tea', this)">🍵 Special Tea (4)</button>
+                <button class="cat-pill" onclick="filterCategory('dessert', this)">🍰 Bakery & Desserts (3)</button>
+            </div>
+        </div>
 
-function addToCart(item, price){
-  if(cart[item]) cart[item].quantity++;
-  else cart[item] = {price, quantity:1};
-  updateCart();
-}
+        <!-- NO RESULTS MESSAGE -->
+        <div id="no-results-msg" style="display:none; text-align:center; padding: 50px 20px; color:var(--text-muted); background:var(--bg-card); border-radius:20px; border:1px solid var(--glass-border);">
+            <i class="fa-solid fa-magnifying-glass-minus" style="font-size:3.5rem; color:var(--terracotta); margin-bottom:14px; display:block;"></i>
+            <h3 style="color:var(--text-heading); font-size:1.5rem;">No Menu Items Found</h3>
+            <p style="margin-top:8px;">We couldn't find anything matching your search. Try searching for "coffee", "fries", "waffle", or "tea".</p>
+            <button class="btn-secondary" onclick="clearSearchInput()" style="margin-top:16px;">
+                Reset Search Filters <i class="fa-solid fa-rotate-left"></i>
+            </button>
+        </div>
 
-function removeFromCart(item){
-  if(cart[item]){
-    cart[item].quantity--;
-    if(cart[item].quantity <= 0) delete cart[item];
-    updateCart();
-  }
-}
+        <!-- PRODUCTS GRID (17 FULLY WORKING ITEMS) -->
+        <div class="product-grid" id="menu-product-grid">
 
-function updateCart(){
-  const cartList = document.getElementById("cart-items");
-  const totalDisplay = document.getElementById("total");
-  cartList.innerHTML = "";
-  total = 0;
-  for(const item in cart){
-    const li = document.createElement("li");
-    const itemTotal = cart[item].price * cart[item].quantity;
-    li.innerHTML = `${item} × ${cart[item].quantity} = ₹${itemTotal} <button onclick="removeFromCart('${item}')">Remove</button>`;
-    cartList.appendChild(li);
-    total += itemTotal;
-  }
-  totalDisplay.textContent = `Total: ₹${total}`;
-}
+            <!-- COFFEE ITEMS -->
+            <div class="product-card tilt-card" data-category="coffee">
+                <span class="product-badge">Bestseller</span>
+                <div class="product-img-stage">
+                    <img src="menu pic/americano.jpg" alt="Americano">
+                </div>
+                <div class="product-info">
+                    <h3>Americano Espresso</h3>
+                    <p class="product-taste-tag">Rich double-shot espresso diluted with silky hot mineral water.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(4.9)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹110</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Americano', 110, 'menu pic/americano.jpg', 'coffee')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
 
-function placeOrder(){
-  if(total === 0){
-    alert("Your cart is empty!");
-    return;
-  }
-  document.getElementById("thank-you").textContent = "🎉 Thank you for your order!";
-  for(const item in cart) delete cart[item];
-  updateCart();
-}
+            <div class="product-card tilt-card" data-category="coffee">
+                <div class="product-img-stage">
+                    <img src="menu pic/espresso.jpg" alt="Espresso">
+                </div>
+                <div class="product-info">
+                    <h3>Bold Espresso Shot</h3>
+                    <p class="product-taste-tag">Concentrated single origin Ethiopian roast with dense golden crema.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        <span>(4.7)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹100</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Espresso Shot', 100, 'menu pic/espresso.jpg', 'coffee')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
 
-</script>
+            <div class="product-card tilt-card" data-category="coffee">
+                <span class="product-badge" style="background:rgba(224, 122, 95, 0.2); border-color:var(--terracotta-primary); color:var(--terracotta-primary);">Popular</span>
+                <div class="product-img-stage">
+                    <img src="menu pic/mocha cff.jpg" alt="Mocha">
+                </div>
+                <div class="product-info">
+                    <h3>Dark Chocolate Mocha</h3>
+                    <p class="product-taste-tag">Espresso infused with Dutch dark cocoa and micro-foamed milk.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(4.9)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹150</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Mocha Coffee', 150, 'menu pic/mocha cff.jpg', 'coffee')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
 
+            <div class="product-card tilt-card" data-category="coffee">
+                <span class="product-badge">Top Favorite</span>
+                <div class="product-img-stage">
+                    <img src="menu pic/frappe coffe.jpg" alt="Frappe">
+                </div>
+                <div class="product-info">
+                    <h3>Cold Frappe Supreme</h3>
+                    <p class="product-taste-tag">Blended iced espresso crowned with whipped vanilla cloud cream.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(5.0)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹179</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Frappe Supreme', 179, 'menu pic/frappe coffe.jpg', 'coffee')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
 
-<!-- AOS SCRIPT -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({ duration:1200 });
-</script>
+            <div class="product-card tilt-card" data-category="coffee">
+                <div class="product-img-stage">
+                    <img src="menu pic/cappuccino.jpg" alt="Cappuccino">
+                </div>
+                <div class="product-info">
+                    <h3>Classic Cappuccino</h3>
+                    <p class="product-taste-tag">Equal balance of rich espresso, steamed milk, and cocoa foam.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        <span>(4.8)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹90</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Cappuccino', 90, 'menu pic/cappuccino.jpg', 'coffee')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
 
-<!-- FOOTER -->
-<footer>
-  © 2025 Mayank Sharma — Mayank Sharma,All Rights Reserved.
-</footer>
-<!-- AOS Script -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({ duration: 1200 });</script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const loginBtn = document.querySelector(".login-btn");
+            <!-- GOURMET SNACKS -->
+            <div class="product-card tilt-card" data-category="snack">
+                <span class="product-badge">Bestseller</span>
+                <div class="product-img-stage">
+                    <img src="menu pic/french fries.jpg" alt="French Fries">
+                </div>
+                <div class="product-info">
+                    <h3>Crispy French Fries</h3>
+                    <p class="product-taste-tag">Golden potato fries tossed in Himalayan sea salt and herbs.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        <span>(4.7)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹50</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('French Fries', 50, 'menu pic/french fries.jpg', 'snack')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
 
-    if(localStorage.getItem("loggedInUser")){
-        if(loginBtn){
-            loginBtn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i> Logout';
-            loginBtn.href = "#";
-            loginBtn.addEventListener("click", () => {
-                localStorage.removeItem("loggedInUser");
-                alert("Logged out successfully!");
-                location.reload();
-            });
+            <div class="product-card tilt-card" data-category="snack">
+                <span class="product-badge" style="background:rgba(244, 63, 94, 0.2); border-color:var(--red-accent); color:var(--red-accent);">Spicy</span>
+                <div class="product-img-stage">
+                    <img src="menu pic/peri peri.jpg" alt="Peri Peri Fries">
+                </div>
+                <div class="product-info">
+                    <h3>Peri Peri Crispy Fries</h3>
+                    <p class="product-taste-tag">Hand-cut fries dusted with fiery African peri peri spice mix.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(4.9)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹85</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Peri Peri Fries', 85, 'menu pic/peri peri.jpg', 'snack')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card tilt-card" data-category="snack">
+                <div class="product-img-stage">
+                    <img src="menu pic/bun maska.jpg" alt="Bun Maska">
+                </div>
+                <div class="product-info">
+                    <h3>Fresh Butter Bun Maska</h3>
+                    <p class="product-taste-tag">Warm soft brioche bun slathered with rich salted dairy butter.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(4.8)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹65</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Bun Maska', 65, 'menu pic/bun maska.jpg', 'snack')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card tilt-card" data-category="snack">
+                <span class="product-badge">Top Rated</span>
+                <div class="product-img-stage">
+                    <img src="menu pic/garlic bread.jpg" alt="Garlic Bread">
+                </div>
+                <div class="product-info">
+                    <h3>Cheesy Garlic Bread</h3>
+                    <p class="product-taste-tag">Toasted baguette rubbed with garlic butter & melted mozzarella.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(5.0)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹110</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Garlic Bread', 110, 'menu pic/garlic bread.jpg', 'snack')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card tilt-card" data-category="snack">
+                <span class="product-badge" style="background:rgba(224, 122, 95, 0.2); border-color:var(--terracotta-primary); color:var(--terracotta-primary);">Chef's Special</span>
+                <div class="product-img-stage">
+                    <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&auto=format&fit=crop" alt="Paneer Sandwich">
+                </div>
+                <div class="product-info">
+                    <h3>Paneer Tikka Grill Sandwich</h3>
+                    <p class="product-taste-tag">Smoky grilled cottage cheese cubes with mint mayo in artisan bread.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(4.9)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹140</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Paneer Tikka Sandwich', 140, 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&auto=format&fit=crop', 'snack')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+
+            <!-- SPECIAL TEA -->
+            <div class="product-card tilt-card" data-category="tea">
+                <span class="product-badge">Refreshing</span>
+                <div class="product-img-stage">
+                    <img src="menu pic/ice tea.jpg" alt="Ice Tea">
+                </div>
+                <div class="product-info">
+                    <h3>Peach Ice Tea</h3>
+                    <p class="product-taste-tag">Cold brewed black tea infused with natural white peach nectar.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(4.8)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹55</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Peach Ice Tea', 55, 'menu pic/ice tea.jpg', 'tea')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card tilt-card" data-category="tea">
+                <div class="product-img-stage">
+                    <img src="menu pic/milk tea.jpg" alt="Milk Tea">
+                </div>
+                <div class="product-info">
+                    <h3>Special Masala Milk Tea</h3>
+                    <p class="product-taste-tag">Traditional Assam tea boiled with cardamoms, ginger & cloves.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(4.9)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹50</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Masala Milk Tea', 50, 'menu pic/milk tea.jpg', 'tea')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card tilt-card" data-category="tea">
+                <span class="product-badge">Organic</span>
+                <div class="product-img-stage">
+                    <img src="menu pic/matcha latte.jpg" alt="Matcha Latte">
+                </div>
+                <div class="product-info">
+                    <h3>Japanese Matcha Latte</h3>
+                    <p class="product-taste-tag">Ceremonial Uji green tea whisked with steamed oat milk.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(5.0)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹85</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Matcha Latte', 85, 'menu pic/matcha latte.jpg', 'tea')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card tilt-card" data-category="tea">
+                <div class="product-img-stage">
+                    <img src="menu pic/gud tea.jpg" alt="Guud Chai">
+                </div>
+                <div class="product-info">
+                    <h3>Desi Gud Chai (Jaggery Tea)</h3>
+                    <p class="product-taste-tag">Healthy organic tea sweetened with natural unrefined jaggery.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(4.9)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹60</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Gud Chai', 60, 'menu pic/gud tea.jpg', 'tea')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+
+            <!-- BAKERY & DESSERTS -->
+            <div class="product-card tilt-card" data-category="dessert">
+                <span class="product-badge">Sweet Treat</span>
+                <div class="product-img-stage">
+                    <img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=500&auto=format&fit=crop" alt="Chocolate Waffle">
+                </div>
+                <div class="product-info">
+                    <h3>Belgian Chocolate Waffle</h3>
+                    <p class="product-taste-tag">Crispy golden waffle drenched in warm Belgian dark chocolate drip.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(5.0)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹130</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Chocolate Waffle', 130, 'https://images.unsplash.com/photo-1562376552-0d160a2f238d?w=500&auto=format&fit=crop', 'dessert')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card tilt-card" data-category="dessert">
+                <div class="product-img-stage">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&auto=format&fit=crop" alt="Choco Lava Cake">
+                </div>
+                <div class="product-info">
+                    <h3>Warm Choco Lava Cake</h3>
+                    <p class="product-taste-tag">Decadent chocolate cake with a molten warm chocolate center.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(4.9)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹99</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Choco Lava Cake', 99, 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=500&auto=format&fit=crop', 'dessert')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+
+            <div class="product-card tilt-card" data-category="dessert">
+                <span class="product-badge">Top Favorite</span>
+                <div class="product-img-stage">
+                    <img src="https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?w=500&auto=format&fit=crop" alt="Red Velvet Pastry">
+                </div>
+                <div class="product-info">
+                    <h3>Red Velvet Cream Pastry</h3>
+                    <p class="product-taste-tag">Moist cocoa velvet sponge layered with smooth cream cheese frosting.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(4.9)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹115</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Red Velvet Pastry', 115, 'https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?w=500&auto=format&fit=crop', 'dessert')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SLIDE-OUT CART DRAWER -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay" onclick="if(event.target===this) toggleCartDrawer(false)">
+        <div class="cart-drawer">
+            <div class="cart-drawer-header">
+                <h2><i class="fa-solid fa-basket-shopping"></i> Your Coffee Cart</h2>
+                <button class="close-drawer-btn" onclick="toggleCartDrawer(false)">&times;</button>
+            </div>
+            <div class="cart-items-body" id="cart-drawer-items"></div>
+            <div class="cart-drawer-footer">
+                <div class="cart-summary-line">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">₹0</span>
+                </div>
+                <div class="cart-summary-line">
+                    <span>Taxes & Service</span>
+                    <span>₹0 (Free)</span>
+                </div>
+                <div class="cart-summary-line total">
+                    <span>Total Amount</span>
+                    <span id="cart-total">₹0</span>
+                </div>
+                <button class="btn-primary checkout-btn" onclick="openCheckoutModal()">
+                    Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="modal-overlay" id="checkout-modal-overlay" onclick="if(event.target===this) closeCheckoutModal()">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-credit-card"></i> Order Checkout</h3>
+                <button class="close-drawer-btn" onclick="closeCheckoutModal()">&times;</button>
+            </div>
+            <form onsubmit="processCheckoutOrder(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="cust-name" class="form-control" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" placeholder="+XX XYZ-XYZ-XYZ" required>
+                </div>
+                <div class="form-group">
+                    <label>Delivery Address / Table No.</label>
+                    <textarea class="form-control" placeholder="Enter full address or café table number" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <select class="form-control">
+                        <option value="upi">UPI / GPay / PhonePe</option>
+                        <option value="card">Credit / Debit Card</option>
+                        <option value="cod">Cash on Delivery / Pay at Counter</option>
+                    </select>
+                </div>
+                <div style="margin: 20px 0; font-size:1.1rem; font-weight:700; color:var(--terracotta-primary); text-align:right;">
+                    Amount Payable: <span id="modal-order-total">₹0</span>
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%;">
+                    Confirm & Place Order <i class="fa-solid fa-check"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo">
+                    <img src="images/cafe logo.jpg" alt="CC Coffee Logo">
+                    <span class="brand-name">CC Coffee House</span>
+                </a>
+                <p>Serving artisan coffee, delicious snacks, and unforgettable atmosphere since 1999.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Full Menu</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="rating.html">Rate Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Café Hours</h4>
+                <ul>
+                    <li>Mon - Fri: 8:00 AM - 11:00 PM</li>
+                    <li>Sat - Sun: 8:00 AM - 12:00 AM</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot" style="color:var(--terracotta-primary);"></i> XYZ Commercial Complex, City</li>
+                    <li><i class="fa-solid fa-phone" style="color:var(--terracotta);"></i> +XX XYZ-XYZ-XYZ</li>
+                    <li><i class="fa-solid fa-envelope" style="color:var(--terracotta);"></i> contact@xyzcafe.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 The CC Coffee House. Crafted with <span style="color:var(--terracotta);">♥</span> for coffee lovers.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 900, once: true, offset: 60 });</script>
+    <script src="js/main.js"></script>
+
+    <!-- HIGH-PRECISION REALTIME SEARCH & CATEGORY FILTER SCRIPT -->
+    <script>
+        let currentCategory = 'all';
+
+        function filterCategory(cat, btn) {
+            currentCategory = cat;
+            const pills = document.querySelectorAll('.cat-pill');
+            pills.forEach(p => p.classList.remove('active'));
+            if (btn) btn.classList.add('active');
+
+            filterMenuItems();
         }
-    }
-});
-</script>
-<script>
-const menuBtn = document.getElementById("menu-btn");
-const nav = document.querySelector("nav");
 
-menuBtn.onclick = () => nav.classList.toggle("show");
-</script>
+        function clearSearchInput() {
+            const searchInput = document.getElementById('menu-search-input');
+            if (searchInput) {
+                searchInput.value = '';
+                filterMenuItems();
+            }
+        }
 
+        function filterMenuItems() {
+            const searchInput = document.getElementById('menu-search-input');
+            const clearBtn = document.getElementById('clear-search-btn');
+            const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
 
+            if (clearBtn) {
+                clearBtn.style.display = query.length > 0 ? 'block' : 'none';
+            }
+
+            const cards = document.querySelectorAll('#menu-product-grid .product-card');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3') ? card.querySelector('h3').textContent.toLowerCase() : '';
+                const tasteTag = card.querySelector('.product-taste-tag') ? card.querySelector('.product-taste-tag').textContent.toLowerCase() : '';
+                const badgeTag = card.querySelector('.product-badge') ? card.querySelector('.product-badge').textContent.toLowerCase() : '';
+                const category = card.getAttribute('data-category') || '';
+
+                const matchesCat = (currentCategory === 'all' || category === currentCategory);
+                
+                // Flexible matching: check title, taste description, badge tag, or category
+                const matchesQuery = query === '' || 
+                                     title.includes(query) || 
+                                     tasteTag.includes(query) || 
+                                     badgeTag.includes(query) || 
+                                     category.includes(query);
+
+                if (matchesCat && matchesQuery) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const noResultsMsg = document.getElementById('no-results-msg');
+            if (noResultsMsg) {
+                noResultsMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+            }
+        }
+
+        // Initialize visibility on page load immediately
+        window.addEventListener('DOMContentLoaded', () => {
+            filterMenuItems();
+        });
+
+        // Backup init after scripts finish
+        window.addEventListener('load', () => {
+            filterMenuItems();
+        });
+    </script>
 </body>
 </html>
-

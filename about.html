@@ -1,335 +1,329 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ABOUT US - The CC Coffee House</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | The CC Coffee House – Our Story & Spaces</title>
+    <meta name="description" content="Discover the story behind CC Coffee House — 27 years of artisan brewing, warm hospitality, aesthetic seating, and a private celebration hall.">
 
-<!-- Icons + AOS Animations -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+    <!-- Favicon & Social Meta -->
+    <link rel="icon" type="image/jpeg" href="images/cafe logo.jpg">
+    <meta property="og:title" content="About Us | The CC Coffee House">
+    <meta property="og:description" content="Discover 27 years of artisan brewing, warm hospitality, aesthetic seating, and our private celebration hall.">
+    <meta property="og:image" content="images/cafe logo.jpg">
+    <meta property="og:type" content="website">
 
-<style>
-
-/* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:"Poppins",sans-serif;
-  list-style:none;
-}
-
-body{
-  background:#080d1a;
-  color:white;
-  overflow-x:hidden;
-}
-
-/* NEON COLORS */
-:root{
-  --neon-gold:#ffdf59;
-  --neon-blue:#50c8ff;
-  --glass-bg:rgba(255,255,255,0.05);
-}
-
-/* HEADER */
-header{
-  position:fixed;
-  top:0; left:0; right:0;
-  padding:18px 50px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  backdrop-filter:blur(10px);
-  background:rgba(255,255,255,0.06);
-  border-bottom:1px solid rgba(255,255,255,0.2);
-  z-index:1000;
-}
-
-header img{
-  width:160px;
-  filter:drop-shadow(0 0 12px var(--neon-gold));
-}
-
-header ul{
-  display:flex;
-  gap:18px;
-}
-
-header a{
-  color:white;
-  text-decoration:none;
-  padding:8px 20px;
-  background:rgba(255,255,255,0.1);
-  border-radius:20px;
-  transition:.3s;
-}
-
-header a:hover,
-.active-link{
-  background:var(--neon-gold);
-  color:black;
-  box-shadow:0 0 14px var(--neon-gold);
-}
-
-/* PAGE TITLE */
-.page-title{
-  text-align:center;
-  margin-top:180px;
-  font-size:3.5rem;
-  text-shadow:0 0 25px var(--neon-gold);
-  animation:fadeIn 1.5s ease;
-}
-
-@keyframes fadeIn{
-  from{ opacity:0; transform:translateY(25px); }
-  to{ opacity:1; transform:translateY(0); }
-}
-
-/* ABOUT SECTIONS */
-.about-container{
-  width:90%;
-  margin:50px auto 50px auto;
-}
-
-.about-section{
-  background:var(--glass-bg);
-  border:1px solid rgba(255,255,255,0.15);
-  border-radius:18px;
-  padding:25px;
-  margin-bottom:55px;
-  backdrop-filter:blur(8px);
-  display:flex;
-  align-items:center;
-  gap:30px;
-  transition:.3s;
-}
-
-.about-section:hover{
-  box-shadow:0 0 20px var(--neon-gold);
-  transform:translateY(-6px);
-}
-
-.about-section img{
-  width:330px;
-  border-radius:12px;
-  animation:float 4s ease-in-out infinite;
-  filter:drop-shadow(0 0 12px var(--neon-blue));
-}
-
-@keyframes float{
-  0%,100%{ transform:translateY(0); }
-  50%{ transform:translateY(-12px); }
-}
-
-.about-text h3{
-  font-size:2rem;
-  color:var(--neon-gold);
-  margin-bottom:10px;
-  text-shadow:0 0 10px black;
-}
-
-.about-text p{
-  font-size:1.15rem;
-  line-height:1.6;
-  opacity:0.85;
-}
-
-/* MOBILE RESPONSIVE */
-@media(max-width:900px){
-  .about-section{
-    flex-direction:column;
-    text-align:center;
-  }
-  .about-section img{
-    width:95%;
-  }
-}
-
-/* FOOTER */
-footer{
-  margin-top:80px;
-  padding:20px;
-  text-align:center;
-  background:#090d17;
-  border-top:1px solid rgba(255,255,255,0.15);
-}
-/* Mobile hamburger */
-#menu-btn {
-  display:none;
-  font-size:1.7rem;
-  cursor:pointer;
-}
-
-/* Mobile menu behavior */
-@media(max-width:768px){
-  nav{ 
-    position:fixed;
-    right:-120%;
-    top:75px;
-    width:220px;
-    padding:20px;
-    backdrop-filter: blur(12px);
-    background:rgba(255,255,255,0.09);
-    border-left:1px solid rgba(255,255,255,0.2);
-    transition:.3s;
-    flex-direction:column;
-  }
-
-  nav.show{ right:0%; }
-
-  nav a{
-    margin:12px 0;
-    width:100%;
-    text-align:center;
-    display:block;
-  }
-
-  #menu-btn{ display:block; }
-}
-
-</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
 
-<!-- HEADER -->
-
-<header>
-  <!-- Logo -->
-  <div class="logo">
-    <img src="images/cafe logo.jpg" alt="CC Coffee House Logo">
-  </div>
-
-  <!-- Hamburger icon for mobile -->
-  <i id="menu-btn" class="fas fa-bars"></i>
-
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html">HOME</a>
-    <a href="about.html">ABOUT</a>
-    <a href="menu.html">MENU</a>
-    <a href="contact.html">CONTACT</a>
-    <a href="RATING.html">RATE US</a>
-  </nav>
-
-  <!-- Login button -->
-  <a href="login.html" class="login-btn">
-    <i class="fa-solid fa-user"></i> Login
-  </a>
-</header>
-
-
-<!-- PAGE TITLE -->
-<h1 class="page-title">ABOUT US</h1>
-
-<div class="about-container">
-
-    <!-- 1 Ambience -->
-    <div class="about-section" data-aos="fade-up">
-      <img src="images/cafe-group-sitting-area.jpg" alt="">
-      <div class="about-text">
-        <h3>Our Café Ambience</h3>
-        <p>
-          The CC Coffee House is built for those who appreciate aesthetics, warmth, and a sense of belonging. 
-          The moment you enter, you're welcomed by a soft neon glow, clean premium interiors and the soothing 
-          aroma of fresh coffee brewing every minute. Whether you're here to chill with friends, study for long 
-          hours, or enjoy a peaceful solo coffee moment — the ambience envelopes you in comfort.  
-          Soft music, gentle lighting, cozy seating and an atmosphere curated to make people stay longer, talk deeper, 
-          laugh louder and create memories — this is the soul of our café.
-        </p>
-      </div>
+    <!-- ── PAGE PRELOADER ── -->
+    <div id="page-preloader">
+        <img src="images/cafe logo.jpg" alt="CC Coffee House" class="preloader-logo">
+        <p class="preloader-brand-name">CC Coffee House</p>
+        <div class="preloader-bar-track">
+            <div class="preloader-bar-fill"></div>
+        </div>
     </div>
 
-    <!-- 2 Party Hall -->
-    <div class="about-section" data-aos="fade-up" data-aos-delay="150">
-      <img src="images/party area.jpg" alt="">
-      <div class="about-text">
-        <h3>Premium Party Hall</h3>
-        <p>
-          Our neon-themed party area is designed to transform celebrations into unforgettable experiences.  
-          From birthdays, anniversaries, farewell parties to corporate gatherings, our event space offers 
-          premium seating, customizable lighting, curated music, decor options and an energetic vibe that 
-          sets the perfect mood. We take care of arrangements, food, beverages and serving — so you can 
-          freely enjoy your moment without stress. With stunning backdrops for pictures, dedicated service 
-          staff, and space that feels alive — your party becomes more than an event, it becomes a memory worth keeping.
+    <!-- NAVBAR -->
+    <header class="navbar-header" id="main-navbar">
+        <a href="index.html" class="brand-logo">
+            <img src="images/cafe logo.jpg" alt="CC Coffee House Logo">
+            <div>
+                <span class="brand-name">CC Coffee House</span>
+                <span class="brand-tagline">Artisan Roasters • Est. 1999</span>
+            </div>
+        </a>
+        <div class="status-badge-pill">
+            <span class="status-dot"></span> Open Now · 8 AM – 12 AM
+        </div>
+        <i class="fa-solid fa-bars mobile-toggle" id="menu-toggle-btn"></i>
+        <nav class="nav-links" id="nav-links">
+            <a href="index.html"   class="nav-link-item">HOME</a>
+            <a href="menu.html"    class="nav-link-item">MENU</a>
+            <a href="about.html"   class="nav-link-item active">ABOUT</a>
+            <a href="contact.html" class="nav-link-item">CONTACT</a>
+            <a href="rating.html"  class="nav-link-item">RATE US</a>
+        </nav>
+        <div class="header-actions">
+            <button class="cart-trigger-btn" onclick="toggleCartDrawer(true)" title="View Cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge" style="display:none;">0</span>
+            </button>
+            <div id="header-auth-btn">
+                <a href="login.html" class="btn-primary" style="padding:9px 22px;font-size:0.84rem;">
+                    <i class="fa-solid fa-user"></i> Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HERO BANNER -->
+    <section class="page-hero-banner">
+        <span class="badge-tag" data-aos="fade-down">
+            <i class="fa-solid fa-sparkles"></i> OUR STORY SINCE 1999
+        </span>
+        <h1 class="hero-title" data-aos="fade-up" style="font-size:clamp(2.6rem,5.5vw,4.5rem);margin-top:8px;">
+            About CC Coffee House
+        </h1>
+        <p class="section-desc" data-aos="fade-up" data-aos-delay="100" style="max-width:620px;margin:20px auto 0;">
+            Artisan coffee, cozy seating, and warm hospitality crafted with love for coffee enthusiasts across the city.
         </p>
-      </div>
+    </section>
+
+    <!-- GALLERY SPACES (PICTURES ON TOP) -->
+    <section class="section" style="padding-top:20px; padding-bottom:50px;">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">EXPLORE OUR SPACES</span>
+            <h2 class="section-title">Hall & Seating Spaces</h2>
+            <p class="section-desc">Thoughtfully designed spaces for group dining, quiet work, and private celebrations.</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-card tilt-card" data-aos="fade-up" data-aos-delay="80">
+                <span style="position:absolute;top:14px;right:14px;background:rgba(7,11,20,0.72);color:var(--gold);font-size:0.74rem;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid rgba(244,208,104,0.30);backdrop-filter:blur(8px);z-index:3;pointer-events:none;"><i class="fa-solid fa-expand"></i> Tap to View</span>
+                <img src="images/cafe-group-sitting-area.jpg" alt="Group Dining Lounge">
+                <div class="gallery-info">
+                    <h4>Group Dining Lounge</h4>
+                    <p>Cozy seating booths suited for group hangouts, coffee breaks, and long conversations.</p>
+                </div>
+            </div>
+            <div class="gallery-card tilt-card" data-aos="fade-up" data-aos-delay="160">
+                <span style="position:absolute;top:14px;right:14px;background:rgba(7,11,20,0.72);color:var(--gold);font-size:0.74rem;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid rgba(244,208,104,0.30);backdrop-filter:blur(8px);z-index:3;pointer-events:none;"><i class="fa-solid fa-expand"></i> Tap to View</span>
+                <img src="images/party area.jpg" alt="Private Party Hall">
+                <div class="gallery-info">
+                    <h4>Private Party Hall</h4>
+                    <p>Customizable party lounge for birthdays, anniversaries, and corporate gatherings.</p>
+                </div>
+            </div>
+            <div class="gallery-card tilt-card" data-aos="fade-up" data-aos-delay="240">
+                <span style="position:absolute;top:14px;right:14px;background:rgba(7,11,20,0.72);color:var(--gold);font-size:0.74rem;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid rgba(244,208,104,0.30);backdrop-filter:blur(8px);z-index:3;pointer-events:none;"><i class="fa-solid fa-expand"></i> Tap to View</span>
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=500&auto=format&fit=crop" alt="Work & Study Nook">
+                <div class="gallery-info">
+                    <h4>Work & Study Nook</h4>
+                    <p>Quiet corners equipped with 300 Mbps fast WiFi and charging ports at every booth.</p>
+                </div>
+            </div>
+            <div class="gallery-card tilt-card" data-aos="fade-up" data-aos-delay="320">
+                <span style="position:absolute;top:14px;right:14px;background:rgba(7,11,20,0.72);color:var(--gold);font-size:0.74rem;font-weight:700;padding:5px 12px;border-radius:20px;border:1px solid rgba(244,208,104,0.30);backdrop-filter:blur(8px);z-index:3;pointer-events:none;"><i class="fa-solid fa-expand"></i> Tap to View</span>
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop" alt="VIP Private Booths">
+                <div class="gallery-info">
+                    <h4>VIP Private Booths</h4>
+                    <p>Intimate seating designed for quiet conversations and exclusive coffee meets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <section style="padding:0 6% 60px 6%;">
+        <div class="stats-strip" data-aos="fade-up">
+            <div class="stat-item">
+                <h4>27+ Years</h4>
+                <p>Artisan Brewing Legacy</p>
+            </div>
+            <div class="stat-item">
+                <h4>150,000+</h4>
+                <p>Happy Guests Served</p>
+            </div>
+            <div class="stat-item">
+                <h4>500+</h4>
+                <p>Celebrations Hosted</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT MAKES US SPECIAL -->
+    <section class="section" style="padding-top:20px;">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">OUR CAFÉ ESSENCE</span>
+            <h2 class="section-title">What Makes Us Special</h2>
+            <p class="section-desc">Four pillars that define the warm, premium experience at CC Coffee House.</p>
+        </div>
+
+        <div class="grid-cards">
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="80">
+                <div class="card-icon"><i class="fa-solid fa-mug-hot"></i></div>
+                <h3>Artisan Roasting</h3>
+                <p>Ethically sourced 100% Arabica beans freshly roasted in-house to deliver rich, smooth, complex flavour in every sip.</p>
+            </div>
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="160">
+                <div class="card-icon" style="background:rgba(129,178,154,0.12);border-color:var(--matcha);color:var(--matcha);">
+                    <i class="fa-solid fa-couch"></i>
+                </div>
+                <h3>Aesthetic Ambience</h3>
+                <p>Warm ambient lighting, comfortable seating booths, and a relaxed atmosphere to chill, study, or work remotely.</p>
+            </div>
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="240">
+                <div class="card-icon" style="background:rgba(244,162,97,0.12);border-color:var(--amber);color:var(--amber);">
+                    <i class="fa-solid fa-champagne-glasses"></i>
+                </div>
+                <h3>Private Party Hall</h3>
+                <p>A dedicated celebration space with customizable lighting, flexible seating, and specialized catering for special events.</p>
+            </div>
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="320">
+                <div class="card-icon" style="background:rgba(244,208,104,0.12);border-color:var(--gold);color:var(--gold);">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <h3>Warm Hospitality</h3>
+                <p>Attentive staff dedicated to making every guest feel valued, comfortable, and genuinely right at home.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MILESTONES JOURNEY -->
+    <section class="section" style="padding-top:20px;background:linear-gradient(180deg,rgba(18,25,44,0.55) 0%,transparent 100%);">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">OUR JOURNEY</span>
+            <h2 class="section-title">Milestones of Excellence</h2>
+            <p class="section-desc">From a corner espresso bar to the city's most loved café destination.</p>
+        </div>
+
+        <div class="grid-cards" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));">
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="80">
+                <span style="font-size:0.78rem;font-weight:800;color:var(--terracotta);text-transform:uppercase;letter-spacing:2px;">EST. 1999</span>
+                <div style="width:40px;height:3px;background:linear-gradient(90deg,var(--terracotta),var(--amber));border-radius:2px;margin:12px 0 16px;"></div>
+                <h3>First Espresso Shot</h3>
+                <p>Started as a cozy corner espresso bar with a passion for single-origin roasting and personal service.</p>
+            </div>
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="160">
+                <span style="font-size:0.78rem;font-weight:800;color:var(--matcha);text-transform:uppercase;letter-spacing:2px;">YEAR 2012</span>
+                <div style="width:40px;height:3px;background:linear-gradient(90deg,var(--matcha),#4A8A6E);border-radius:2px;margin:12px 0 16px;"></div>
+                <h3>Aesthetic Lounge Upgrade</h3>
+                <p>Expanded into a luxury multi-colored seating lounge for remote workers, study enthusiasts, and friend groups.</p>
+            </div>
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="240">
+                <span style="font-size:0.78rem;font-weight:800;color:var(--amber);text-transform:uppercase;letter-spacing:2px;">YEAR 2020</span>
+                <div style="width:40px;height:3px;background:linear-gradient(90deg,var(--amber),var(--gold));border-radius:2px;margin:12px 0 16px;"></div>
+                <h3>Private Celebration Lounge</h3>
+                <p>Built a dedicated party hall equipped with ambient LED lighting, projector, and premium catering for celebrations.</p>
+            </div>
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="320">
+                <span style="font-size:0.78rem;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:2px;">TODAY</span>
+                <div style="width:40px;height:3px;background:linear-gradient(90deg,var(--gold),var(--terracotta));border-radius:2px;margin:12px 0 16px;"></div>
+                <h3>150,000+ Guests Served</h3>
+                <p>Proudly recognized as the city's top-rated artisan coffee destination with a loyal community of coffee lovers.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="padding:0 6% 100px 6%;">
+        <div data-aos="fade-up" style="
+            background:linear-gradient(135deg,rgba(129,178,154,0.15),rgba(244,208,104,0.10),rgba(224,122,95,0.12));
+            border:1px solid rgba(129,178,154,0.30); border-radius:32px;
+            padding:55px 44px; text-align:center; backdrop-filter:blur(16px);
+            box-shadow:0 20px 60px rgba(0,0,0,0.45), 0 0 40px rgba(129,178,154,0.10);
+            position:relative; overflow:hidden;
+        ">
+            <span class="section-subtitle" style="display:block;margin-bottom:14px;">COME VISIT US</span>
+            <h2 style="font-size:clamp(1.7rem,3.5vw,2.7rem);color:var(--text-heading);margin-bottom:16px;">Experience It For Yourself</h2>
+            <p style="color:var(--text-muted);font-size:1rem;max-width:480px;margin:0 auto 34px;">
+                Join thousands of coffee lovers who have made CC Coffee House their home away from home.
+            </p>
+            <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+                <a href="menu.html" class="btn-primary"><i class="fa-solid fa-mug-hot"></i> Explore Menu</a>
+                <a href="contact.html" class="btn-secondary"><i class="fa-solid fa-location-dot"></i> Find Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CART DRAWER -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay" onclick="if(event.target===this) toggleCartDrawer(false)">
+        <div class="cart-drawer">
+            <div class="cart-drawer-header">
+                <h2><i class="fa-solid fa-basket-shopping"></i> Your Coffee Cart</h2>
+                <button class="close-drawer-btn" onclick="toggleCartDrawer(false)">&times;</button>
+            </div>
+            <div class="cart-items-body" id="cart-drawer-items"></div>
+            <div class="cart-drawer-footer">
+                <div class="cart-summary-line"><span>Subtotal</span><span id="cart-subtotal">₹0</span></div>
+                <div class="cart-summary-line total"><span>Total Amount</span><span id="cart-total">₹0</span></div>
+                <button class="btn-primary checkout-btn" onclick="openCheckoutModal()">
+                    Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
     </div>
 
-    <!-- 3 Signature Taste -->
-    <div class="about-section" data-aos="fade-up" data-aos-delay="300">
-      <img src="images/imported coffe.jpg" alt="">
-      <div class="about-text">
-        <h3>Our Signature Taste</h3>
-        <p>
-          Great coffee begins long before the cup — it begins with the bean. 
-          We source premium beans from Ethiopia, Brazil and Colombia, known globally for depth, 
-          texture and bold aroma. Each batch is freshly roasted to preserve natural oils, delivering 
-          a cup that feels rich, smooth and expressive. Our baristas practise brewing as an art — carefully 
-          extracting flavours that highlight sweetness, strength and warmth with every sip.  
-          From creamy lattes and strong americanos to cold brews, mochas, handcrafted shakes and dessert coffees —
-          every drink you taste is detailed, balanced and made with love. One sip should feel like home.
-        </p>
-      </div>
+    <!-- CHECKOUT MODAL -->
+    <div class="modal-overlay" id="checkout-modal-overlay" onclick="if(event.target===this) closeCheckoutModal()">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-credit-card"></i> Order Checkout</h3>
+                <button class="close-drawer-btn" onclick="closeCheckoutModal()">&times;</button>
+            </div>
+            <form onsubmit="processCheckoutOrder(event)">
+                <div class="form-group"><label>Full Name</label><input type="text" id="cust-name" class="form-control" placeholder="John Doe" required></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" class="form-control" placeholder="+91 98765 43210" required></div>
+                <div class="form-group"><label>Delivery Address / Table No.</label><textarea class="form-control" placeholder="Enter full address or café table number" required></textarea></div>
+                <div class="form-group"><label>Payment Method</label>
+                    <select class="form-control">
+                        <option value="upi">UPI / GPay / PhonePe</option>
+                        <option value="card">Credit / Debit Card</option>
+                        <option value="cod">Cash on Delivery / Pay at Counter</option>
+                    </select>
+                </div>
+                <div style="margin:20px 0;font-size:1.1rem;font-weight:800;color:var(--terracotta);text-align:right;">
+                    Amount Payable: <span id="modal-order-total">₹0</span>
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%;padding:15px;">Confirm & Place Order <i class="fa-solid fa-check"></i></button>
+            </form>
+        </div>
     </div>
 
-    <!-- 4 Service Quality -->
-    <div class="about-section" data-aos="fade-up" data-aos-delay="450">
-      <img src="https://images.unsplash.com/photo-1525610553991-2bede1a236e2" alt="">
-      <div class="about-text">
-        <h3>Our Premium Service</h3>
-        <p>
-          At The CC Coffee House, service is not just hospitality — it's emotion.  
-          Our staff is trained to assist personally, communicate warmly and make every guest feel valued, 
-          whether you stay for five minutes or five hours. From suggesting best sellers based on your mood, 
-          customizing your drink preferences, serving food on time to ensuring comfort and hygiene — 
-          we take care of everything with detail and attentiveness.  
-          We don’t just serve coffee — we serve experiences. Every interaction matters, every smile matters, 
-          every customer matters. You are not a visitor here — you are part of the CC family.
-        </p>
-      </div>
-    </div>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo">
+                    <img src="images/cafe logo.jpg" alt="CC Coffee Logo">
+                    <span class="brand-name">CC Coffee House</span>
+                </a>
+                <p>Serving artisan coffee, delicious snacks, and unforgettable atmosphere since 1999.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com" class="social-link" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://facebook.com" class="social-link" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="mailto:contact@xyzcafe.com" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://wa.me/" class="social-link" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Full Menu</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="rating.html">Rate Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Café Hours</h4>
+                <ul>
+                    <li>Mon – Fri: 8:00 AM – 11:00 PM</li>
+                    <li>Sat – Sun: 8:00 AM – 12:00 AM</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot" style="color:var(--terracotta);"></i> XYZ Commercial Complex, City</li>
+                    <li><i class="fa-solid fa-phone" style="color:var(--terracotta);"></i> +XX XYZ-XYZ-XYZ</li>
+                    <li><i class="fa-solid fa-envelope" style="color:var(--terracotta);"></i> contact@xyzcafe.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 The CC Coffee House. Crafted with <span>♥</span> for coffee lovers.</p>
+        </div>
+    </footer>
 
-</div>
-
-<!-- FOOTER -->
-<footer>
-  © 2025 All Rights Reserved — Mayank Sharma, The CC Coffee House
-</footer>
-
-<!-- AOS SCRIPT -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init({ duration:1200 });
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const loginBtn = document.querySelector(".login-btn");
-
-    if(localStorage.getItem("loggedInUser")){
-        if(loginBtn){
-            loginBtn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i> Logout';
-            loginBtn.href = "#";
-            loginBtn.addEventListener("click", () => {
-                localStorage.removeItem("loggedInUser");
-                alert("Logged out successfully!");
-                location.reload();
-            });
-        }
-    }
-});
-</script>
-<script>
-const menuBtn = document.getElementById("menu-btn");
-const nav = document.querySelector("nav");
-
-menuBtn.onclick = () => nav.classList.toggle("show");
-</script>
-
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 900, once: true, offset: 60 });</script>
+    <script src="js/main.js"></script>
 </body>
 </html>
-

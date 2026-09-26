@@ -1,367 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CONTACT • The CC Coffee House</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | The CC Coffee House – Reservations & Enquiries</title>
+    <meta name="description" content="Get in touch with CC Coffee House for table reservations, party hall bookings, catering enquiries, or feedback. We'd love to hear from you.">
 
-  <!-- Font + Icons + AOS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
-  
-  <style>
-    /* RESET */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-      list-style: none;
-    }
+    <!-- Favicon & Social Meta -->
+    <link rel="icon" type="image/jpeg" href="images/cafe logo.jpg">
+    <meta property="og:title" content="Contact Us | The CC Coffee House">
+    <meta property="og:description" content="Table reservations, party hall bookings, catering inquiries, or friendly feedback. We'd love to hear from you.">
+    <meta property="og:image" content="images/cafe logo.jpg">
+    <meta property="og:type" content="website">
 
-    body {
-      background: #080d1a;
-      color: white;
-      overflow-x: hidden;
-    }
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+    <link rel="stylesheet" href="css/styles.css">
 
-    /* NEON COLORS */
-    :root {
-      --neon-gold: #ffdf59;
-      --neon-blue: #50c8ff;
-      --glass-bg: rgba(255,255,255,0.05);
-    }
+    <style>
+        /* ─── Contact-page specific overrides ─── */
+        .contact-form-card {
+            background: linear-gradient(165deg, var(--bg-secondary), var(--bg-primary));
+            border: 1px solid var(--glass-border-warm);
+            border-radius: 28px; padding: 40px;
+            position: relative; overflow: hidden;
+            box-shadow: var(--shadow-lg), var(--shadow-terra);
+        }
+        .contact-form-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--terracotta), var(--amber), var(--matcha));
+        }
+        .contact-form-card h3 {
+            font-size: 1.65rem; color: var(--terracotta);
+            margin-bottom: 24px; display: flex; align-items: center; gap: 12px;
+        }
 
-    /* HEADER */
-    header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      padding: 18px 50px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      backdrop-filter: blur(10px);
-      background: rgba(255,255,255,0.06);
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      z-index: 1000;
-    }
-
-    header img {
-      width: 160px;
-      filter: drop-shadow(0 0 12px var(--neon-gold));
-    }
-
-    header ul {
-      display: flex;
-      gap: 18px;
-    }
-
-    header a {
-      color: white;
-      text-decoration: none;
-      padding: 8px 20px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 20px;
-      transition: .3s;
-    }
-
-    header a:hover,
-    .active-link {
-      background: var(--neon-gold);
-      color: black;
-      box-shadow: 0 0 14px var(--neon-gold);
-    }
-
-    /* CONTACT SECTION */
-    .contact {
-      min-height: 100vh;
-      padding-top: 170px;
-      padding-bottom: 60px;
-      text-align: center;
-    }
-
-    .contact h2 {
-      font-size: 3.5rem;
-      margin-bottom: 40px;
-      color: var(--neon-gold);
-      text-shadow: 0 0 25px var(--neon-gold);
-      animation: fadeIn 1.5s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity:0; transform:translateY(25px); }
-      to { opacity:1; transform:translateY(0); }
-    }
-
-    .contact-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      max-width: 1100px;
-      width: 90%;
-      margin: auto;
-    }
-
-    /* FORM */
-    .contact-form {
-      background: var(--glass-bg);
-      padding: 25px;
-      border-radius: 15px;
-      backdrop-filter: blur(12px);
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      border: 1px solid rgba(255,255,255,0.15);
-      transition: .3s;
-    }
-
-    .contact-form:hover {
-      box-shadow: 0 0 20px var(--neon-gold);
-      transform: translateY(-6px);
-    }
-
-    .contact-form label {
-      font-size: 1.2rem;
-      text-align: left;
-      color: var(--neon-gold);
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      padding: 12px;
-      background: rgba(0,0,0,0.4);
-      color: white;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 8px;
-      outline: none;
-    }
-
-    .contact-form button {
-      padding: 12px;
-      background: var(--neon-gold);
-      border: none;
-      color: black;
-      font-weight: bold;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: .3s;
-      font-size: 1.2rem;
-    }
-
-    .contact-form button:hover {
-      transform: scale(1.07);
-      box-shadow: 0 0 14px var(--neon-gold);
-    }
-
-    /* CONTACT LINKS */
-    .contact-links {
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-    }
-
-    .contact-card {
-      background: var(--glass-bg);
-      padding: 20px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      text-decoration: none;
-      color: white;
-      transition: .3s;
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-
-    .contact-card:hover {
-      transform: translateX(12px);
-      box-shadow: 0 0 20px var(--neon-blue);
-    }
-
-    .contact-card i {
-      font-size: 2.3rem;
-      color: var(--neon-gold);
-      animation: float 4s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%,100% { transform:translateY(0); }
-      50% { transform:translateY(-10px); }
-    }
-
-    .contact-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 5px;
-      color: var(--neon-gold);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .contact-container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* FOOTER */
-    footer {
-      margin-top: 80px;
-      padding: 20px;
-      text-align: center;
-      background: #090d17;
-      border-top: 1px solid rgba(255,255,255,0.15);
-    }
-    /* Mobile hamburger */
-#menu-btn {
-  display:none;
-  font-size:1.7rem;
-  cursor:pointer;
-}
-
-/* Mobile menu behavior */
-@media(max-width:768px){
-  nav{ 
-    position:fixed;
-    right:-120%;
-    top:75px;
-    width:220px;
-    padding:20px;
-    backdrop-filter: blur(12px);
-    background:rgba(255,255,255,0.09);
-    border-left:1px solid rgba(255,255,255,0.2);
-    transition:.3s;
-    flex-direction:column;
-  }
-
-  nav.show{ right:0%; }
-
-  nav a{
-    margin:12px 0;
-    width:100%;
-    text-align:center;
-    display:block;
-  }
-
-  #menu-btn{ display:block; }
-}
-  </style>
+        /* Hours-day label */
+        .hours-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.94rem;
+        }
+        .hours-row:last-child { border-bottom: none; }
+        .hours-label { color: var(--text-body); font-weight: 600; }
+        .hours-time  { color: var(--amber); font-weight: 700; }
+        .hours-badge {
+            padding: 3px 10px; border-radius: 30px;
+            font-size: 0.72rem; font-weight: 800;
+            background: rgba(34,197,94,0.14);
+            border: 1px solid rgba(34,197,94,0.30);
+            color: var(--green-accent);
+        }
+    </style>
 </head>
-
 <body>
 
-  <!-- HEADER -->
-
-<header>
-  <!-- Logo -->
-  <div class="logo">
-    <img src="images/cafe logo.jpg" alt="CC Coffee House Logo">
-  </div>
-
-  <!-- Hamburger icon for mobile -->
-  <i id="menu-btn" class="fas fa-bars"></i>
-
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html">HOME</a>
-    <a href="about.html">ABOUT</a>
-    <a href="menu.html">MENU</a>
-    <a href="contact.html">CONTACT</a>
-    <a href="RATING.html">RATE US</a>
-  </nav>
-
-  <!-- Login button -->
-  <a href="login.html" class="login-btn">
-    <i class="fa-solid fa-user"></i> Login
-  </a>
-</header>
-
-
-  <!-- CONTACT -->
-  <section class="contact">
-    <h2 data-aos="fade-up">Get In Touch</h2>
-
-    <div class="contact-container">
-      <!-- FORM -->
-      <form class="contact-form" data-aos="fade-up">
-        <label>Name</label>
-        <input type="text" placeholder="Enter your name" required>
-
-        <label>Email</label>
-        <input type="email" placeholder="Enter your email" required>
-
-        <label>Message</label>
-        <textarea rows="5" placeholder="Write your message"></textarea>
-
-        <button type="submit">Send Message</button>
-      </form>
-
-      <!-- CONTACT LINKS -->
-      <div class="contact-links">
-        <a href="#" class="contact-card" data-aos="fade-up" data-aos-delay="150">
-          <i class="fab fa-instagram"></i>
-          <div>
-            <h3>Instagram</h3>
-            <p>Follow us for updates</p>
-          </div>
-        </a>
-
-        <a href="https://github.com/mayanksharma-lpu" target="_blank" class="contact-card" data-aos="fade-up" data-aos-delay="300">
-          <i class="fab fa-github"></i>
-          <div>
-            <h3>GitHub</h3>
-            <p>See my development work</p>
-          </div>
-        </a>
-
-        <a href="mailto:mayanksharmajind@gmail.com" class="contact-card" data-aos="fade-up" data-aos-delay="450">
-          <i class="fas fa-envelope"></i>
-          <div>
-            <h3>Email</h3>
-            <p>mayanksharmajind@gmail.com</p>
-          </div>
-        </a>
-      </div>
+    <!-- ── PAGE PRELOADER ── -->
+    <div id="page-preloader">
+        <img src="images/cafe logo.jpg" alt="CC Coffee House" class="preloader-logo">
+        <p class="preloader-brand-name">CC Coffee House</p>
+        <div class="preloader-bar-track">
+            <div class="preloader-bar-fill"></div>
+        </div>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer>
-    © 2025 All Rights Reserved — Mayank Sharma,The CC Coffee House
-  </footer>
+    <!-- NAVBAR -->
+    <header class="navbar-header" id="main-navbar">
+        <a href="index.html" class="brand-logo">
+            <img src="images/cafe logo.jpg" alt="CC Coffee House Logo">
+            <div>
+                <span class="brand-name">CC Coffee House</span>
+                <span class="brand-tagline">Artisan Roasters • Est. 1999</span>
+            </div>
+        </a>
+        <div class="status-badge-pill">
+            <span class="status-dot"></span> Open Now · 8 AM – 12 AM
+        </div>
+        <i class="fa-solid fa-bars mobile-toggle" id="menu-toggle-btn"></i>
+        <nav class="nav-links" id="nav-links">
+            <a href="index.html"   class="nav-link-item">HOME</a>
+            <a href="menu.html"    class="nav-link-item">MENU</a>
+            <a href="about.html"   class="nav-link-item">ABOUT</a>
+            <a href="contact.html" class="nav-link-item active">CONTACT</a>
+            <a href="rating.html"  class="nav-link-item">RATE US</a>
+        </nav>
+        <div class="header-actions">
+            <button class="cart-trigger-btn" onclick="toggleCartDrawer(true)" title="View Cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge" style="display:none;">0</span>
+            </button>
+            <div id="header-auth-btn">
+                <a href="login.html" class="btn-primary" style="padding:9px 22px;font-size:0.84rem;">
+                    <i class="fa-solid fa-user"></i> Login
+                </a>
+            </div>
+        </div>
+    </header>
 
-  <!-- AOS SCRIPT -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration:1200 });
-  </script>
-  <!-- AOS Script -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({ duration: 1200 });</script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const loginBtn = document.querySelector(".login-btn");
+    <!-- PAGE HERO BANNER -->
+    <section class="page-hero-banner">
+        <span class="badge-tag" data-aos="fade-down">
+            <i class="fa-solid fa-paper-plane"></i> WE'D LOVE TO CONNECT
+        </span>
+        <h1 class="hero-title" data-aos="fade-up" style="font-size:clamp(2.6rem,5.5vw,4.5rem);margin-top:8px;">
+            Get In Touch
+        </h1>
+        <p class="section-desc" data-aos="fade-up" data-aos-delay="100" style="max-width:600px;margin:20px auto 0;">
+            Have a question about our menu, party hall bookings, or feedback? Drop us a line or connect with our team directly.
+        </p>
+    </section>
 
-    if(localStorage.getItem("loggedInUser")){
-        if(loginBtn){
-            loginBtn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i> Logout';
-            loginBtn.href = "#";
-            loginBtn.addEventListener("click", () => {
-                localStorage.removeItem("loggedInUser");
-                alert("Logged out successfully!");
-                location.reload();
-            });
+    <!-- CONTACT GRID: FORM + INFO -->
+    <section style="padding:20px 6% 80px 6%;">
+        <div class="contact-grid" data-aos="fade-up">
+
+            <!-- CONTACT FORM -->
+            <div class="contact-form-card">
+                <h3><i class="fa-solid fa-envelope-open-text"></i> Send Us a Message</h3>
+                <form onsubmit="handleContactSubmit(event)">
+                    <div class="form-group">
+                        <label>Your Full Name</label>
+                        <input type="text" id="contact-name" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="contact-email" class="form-control" placeholder="you@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Subject / Query Type</label>
+                        <select class="form-control">
+                            <option>Table Reservation</option>
+                            <option>Party Hall Booking</option>
+                            <option>General Feedback</option>
+                            <option>Catering & Bulk Order</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Your Message</label>
+                        <textarea id="contact-msg" class="form-control" rows="5"
+                            placeholder="Write your query, reservation request, or any feedback here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width:100%;margin-top:6px;padding:15px;">
+                        Send Message <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- CONTACT INFO + MAP -->
+            <div style="display:flex;flex-direction:column;gap:22px;">
+
+                <!-- Email -->
+                <div class="contact-info-card tilt-card" data-aos="fade-left" data-aos-delay="80">
+                    <div class="card-icon" style="margin-bottom:0;flex-shrink:0;">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size:1.2rem;margin-bottom:4px;">Official Email</h3>
+                        <a href="mailto:contact@xyzcafe.com" style="color:var(--terracotta);font-size:0.96rem;font-weight:600;">contact@xyzcafe.com</a>
+                        <p style="font-size:0.80rem;color:var(--text-muted);margin-top:2px;">We reply within 2–3 business hours</p>
+                    </div>
+                </div>
+
+                <!-- Phone -->
+                <div class="contact-info-card tilt-card" data-aos="fade-left" data-aos-delay="160">
+                    <div class="card-icon" style="margin-bottom:0;flex-shrink:0;background:rgba(129,178,154,0.12);border-color:var(--matcha);color:var(--matcha);">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size:1.2rem;margin-bottom:4px;">Phone / WhatsApp</h3>
+                        <p style="color:var(--matcha);font-size:0.96rem;font-weight:600;">+XX XYZ-XYZ-XYZ</p>
+                        <p style="font-size:0.80rem;color:var(--text-muted);margin-top:2px;">Available 8 AM – 10 PM daily</p>
+                    </div>
+                </div>
+
+                <!-- Address -->
+                <div class="contact-info-card tilt-card" data-aos="fade-left" data-aos-delay="240">
+                    <div class="card-icon" style="margin-bottom:0;flex-shrink:0;background:rgba(244,208,104,0.12);border-color:var(--gold);color:var(--gold);">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h3 style="font-size:1.2rem;margin-bottom:4px;">Café Address</h3>
+                        <p style="font-size:0.96rem;color:var(--text-body);">XYZ Commercial Complex, City Center</p>
+                        <p style="font-size:0.80rem;color:var(--text-muted);margin-top:2px;">Landmark: Near City Mall</p>
+                    </div>
+                </div>
+
+                <!-- Simulated Map -->
+                <div class="map-card-sim tilt-card" data-aos="fade-left" data-aos-delay="320">
+                    <div class="map-pin-badge"><i class="fa-solid fa-location-dot"></i></div>
+                    <h4 style="margin-top:14px;font-size:1.1rem;position:relative;z-index:2;">XYZ Commercial Complex</h4>
+                    <p style="font-size:0.85rem;color:var(--text-muted);position:relative;z-index:2;">City Center • Open 8 AM – 12 AM</p>
+                    <button class="btn-secondary" onclick="showToast('Opening directions in Google Maps...', 'info')"
+                        style="margin-top:14px;padding:8px 20px;font-size:0.82rem;position:relative;z-index:2;">
+                        <i class="fa-solid fa-diamond-turn-right" style="color:var(--terracotta);"></i> Get Directions
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OPENING HOURS -->
+    <section class="section" style="padding-top:10px;background:linear-gradient(180deg,rgba(18,25,44,0.50) 0%,transparent 100%);">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">WHEN TO VISIT</span>
+            <h2 class="section-title">Opening Hours</h2>
+        </div>
+        <div style="max-width:600px;margin:0 auto;" data-aos="fade-up">
+            <div class="glass-card" style="padding:10px 32px;">
+                <div class="hours-row">
+                    <span class="hours-label">Monday – Friday</span>
+                    <span class="hours-time">8:00 AM – 11:00 PM</span>
+                    <span class="hours-badge">Open</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-label">Saturday</span>
+                    <span class="hours-time">8:00 AM – 12:00 AM</span>
+                    <span class="hours-badge">Open</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-label">Sunday</span>
+                    <span class="hours-time">8:00 AM – 12:00 AM</span>
+                    <span class="hours-badge">Open</span>
+                </div>
+                <div class="hours-row">
+                    <span class="hours-label">Public Holidays</span>
+                    <span class="hours-time">9:00 AM – 10:00 PM</span>
+                    <span style="padding:3px 10px;border-radius:30px;font-size:0.72rem;font-weight:800;background:rgba(244,208,104,0.14);border:1px solid rgba(244,208,104,0.30);color:var(--gold);">May Vary</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" style="padding-top:20px;">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">GOT QUESTIONS?</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-desc">Quick answers to the most common questions from our guests.</p>
+        </div>
+
+        <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:16px;" data-aos="fade-up">
+            <div class="faq-item tilt-card" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span>Do I need prior booking for the Party Hall?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, we recommend reserving the Party Hall at least 48 hours in advance to customize neon lights, seating arrangements, music setup, and specialized catering menus. Contact us via the form above or call directly.
+                </div>
+            </div>
+
+            <div class="faq-item tilt-card" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span>What are your delivery hours and coverage area?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Our express local delivery operates daily from 8:30 AM to 10:30 PM within a 10 km radius of the café. Piping fresh coffee is delivered in insulated thermal containers, guaranteed hot or iced as ordered!
+                </div>
+            </div>
+
+            <div class="faq-item tilt-card" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span>Are vegan and dairy-free milk options available?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Absolutely! We offer Almond Milk, Oat Milk, and Soy Milk substitutes for all our hot and cold espresso drinks, matcha lattes, and frappes. Just mention your preference when ordering.
+                </div>
+            </div>
+
+            <div class="faq-item tilt-card" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span>Do you offer high-speed WiFi for remote work?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes! Our Work & Study Nook features complimentary 300 Mbps high-speed WiFi along with charging ports and USB hubs at every booth. Perfect for focused work sessions with great coffee by your side.
+                </div>
+            </div>
+
+            <div class="faq-item tilt-card" onclick="toggleFaq(this)">
+                <div class="faq-question">
+                    <span>Can I order custom catering for corporate events?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes! We offer premium corporate catering packages including coffee stations, finger food, pastry platters, and customized menus. Fill out the contact form above with "Catering & Bulk Order" and we'll get back to you within 24 hours.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CART DRAWER -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay" onclick="if(event.target===this) toggleCartDrawer(false)">
+        <div class="cart-drawer">
+            <div class="cart-drawer-header">
+                <h2><i class="fa-solid fa-basket-shopping"></i> Your Coffee Cart</h2>
+                <button class="close-drawer-btn" onclick="toggleCartDrawer(false)">&times;</button>
+            </div>
+            <div class="cart-items-body" id="cart-drawer-items"></div>
+            <div class="cart-drawer-footer">
+                <div class="cart-summary-line"><span>Subtotal</span><span id="cart-subtotal">₹0</span></div>
+                <div class="cart-summary-line total"><span>Total Amount</span><span id="cart-total">₹0</span></div>
+                <button class="btn-primary checkout-btn" onclick="openCheckoutModal()">
+                    Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="modal-overlay" id="checkout-modal-overlay" onclick="if(event.target===this) closeCheckoutModal()">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-credit-card"></i> Order Checkout</h3>
+                <button class="close-drawer-btn" onclick="closeCheckoutModal()">&times;</button>
+            </div>
+            <form onsubmit="processCheckoutOrder(event)">
+                <div class="form-group"><label>Full Name</label><input type="text" id="cust-name" class="form-control" placeholder="John Doe" required></div>
+                <div class="form-group"><label>Phone Number</label><input type="tel" class="form-control" placeholder="+91 98765 43210" required></div>
+                <div class="form-group"><label>Delivery Address / Table No.</label><textarea class="form-control" placeholder="Enter full address or table number" required></textarea></div>
+                <div class="form-group"><label>Payment Method</label>
+                    <select class="form-control">
+                        <option value="upi">UPI / GPay / PhonePe</option>
+                        <option value="card">Credit / Debit Card</option>
+                        <option value="cod">Cash on Delivery / Pay at Counter</option>
+                    </select>
+                </div>
+                <div style="margin:20px 0;font-size:1.1rem;font-weight:800;color:var(--terracotta);text-align:right;">
+                    Amount Payable: <span id="modal-order-total">₹0</span>
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%;padding:15px;">Confirm & Place Order <i class="fa-solid fa-check"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo">
+                    <img src="images/cafe logo.jpg" alt="CC Coffee Logo">
+                    <span class="brand-name">CC Coffee House</span>
+                </a>
+                <p>Serving artisan coffee, delicious snacks, and unforgettable atmosphere since 1999.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com" class="social-link" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://facebook.com" class="social-link" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="mailto:contact@xyzcafe.com" class="social-link"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://wa.me/" class="social-link" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="menu.html">Full Menu</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="rating.html">Rate Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Café Hours</h4>
+                <ul>
+                    <li>Mon – Fri: 8:00 AM – 11:00 PM</li>
+                    <li>Sat – Sun: 8:00 AM – 12:00 AM</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot" style="color:var(--terracotta);"></i> XYZ Commercial Complex, City</li>
+                    <li><i class="fa-solid fa-phone" style="color:var(--terracotta);"></i> +XX XYZ-XYZ-XYZ</li>
+                    <li><i class="fa-solid fa-envelope" style="color:var(--terracotta);"></i> contact@xyzcafe.com</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 The CC Coffee House. Crafted with <span>♥</span> for coffee lovers.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 900, once: true, offset: 60 });</script>
+    <script src="js/main.js"></script>
+    <script>
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            showToast(`Thank you, ${name}! Your message has been sent. We'll reply within 2–3 hours.`, 'success');
+            event.target.reset();
         }
-    }
-});
-</script>
-<script>
-const menuBtn = document.getElementById("menu-btn");
-const nav = document.querySelector("nav");
-
-menuBtn.onclick = () => nav.classList.toggle("show");
-</script>
-
-
+        function toggleFaq(item) { item.classList.toggle('active'); }
+    </script>
 </body>
 </html>
-

@@ -1,422 +1,519 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The CC Coffee House</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The CC Coffee House | Artisan Café & Luxury Lounge</title>
+    <meta name="description" content="Experience India's most aesthetic artisan café. Handcrafted 100% Arabica coffee, gourmet food, cozy seating & private party hall. Order online for fast delivery.">
 
-<!-- FONT + ICONS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Favicon & Social Meta -->
+    <link rel="icon" type="image/jpeg" href="images/cafe logo.jpg">
+    <meta property="og:title" content="The CC Coffee House | Artisan Café & Luxury Lounge">
+    <meta property="og:description" content="Handcrafted 100% Arabica coffee, gourmet snacks, cozy aesthetic seating & private party hall. Order online for fast delivery.">
+    <meta property="og:image" content="images/cafe logo.jpg">
+    <meta property="og:type" content="website">
 
-<!-- AOS Animation Library -->
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
-
-<style>
-/* RESET */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:"Poppins",sans-serif;
-}
-
-body{
-    background:#080d1a;
-    color:#fff;
-    overflow-x:hidden;
-}
-
-/* NEON GLOW VARIABLES */
-:root{
-    --neon-gold:#ffdf59;
-    --neon-blue:#4ec4ff;
-    --glass-bg:rgba(255,255,255,0.06);
-}
-
-/* HEADER */
-header{
-    position:fixed;
-    top:0;left:0;right:0;
-    padding:20px 50px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    backdrop-filter:blur(12px);
-    background:rgba(255,255,255,0.05);
-    border-bottom:1px solid rgba(255,255,255,0.2);
-    z-index:1000;
-}
-
-header img{
-    width:160px;
-    filter:drop-shadow(0 0 10px var(--neon-gold));
-}
-
-header ul{
-    display:flex;
-    gap:20px;
-    list-style:none;
-}
-
-header a{
-    color:white;
-    padding:8px 18px;
-    border:1px solid transparent;
-    text-decoration:none;
-    transition:.3s;
-    border-radius:20px;
-    background:rgba(255,255,255,0.1);
-}
-
-header a:hover{
-    border-color:var(--neon-gold);
-    box-shadow:0 0 12px var(--neon-gold);
-    color:black;
-    background:var(--neon-gold);
-}
-
-/* HERO — SPLIT SCREEN CINEMATIC */
-.hero{
-    margin-top:120px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:60px;
-    gap:40px;
-}
-
-.hero-text{
-    flex:1;
-}
-
-.hero-text h1{
-    font-size:4.5rem;
-    line-height:1.1;
-    text-shadow:0 0 25px var(--neon-gold);
-}
-
-.hero-text p{
-    margin:15px 0;
-    font-size:1.8rem;
-    opacity:0.8;
-}
-
-.btn{
-    padding:12px 25px;
-    font-size:1.4rem;
-    border:none;
-    border-radius:30px;
-    background:var(--neon-gold);
-    color:black;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.btn:hover{
-    transform:scale(1.08);
-    box-shadow:0 0 15px var(--neon-gold);
-}
-
-/* FLOATING COFFEE IMAGE */
-.hero-img{
-    flex:1;
-    display:flex;
-    justify-content:center;
-}
-
-.hero-img img{
-    width:380px;
-    animation:float 4s ease-in-out infinite;
-    filter:drop-shadow(0 0 20px var(--neon-blue));
-}
-
-@keyframes float{
-    0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(-20px); }
-}
-
-/* SERVICES */
-.section-title{
-    text-align:center;
-    margin:80px 0 30px 0;
-    font-size:2.9rem;
-    text-shadow:0 0 15px var(--neon-gold);
-}
-
-.services{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:30px;
-    padding:0 40px;
-}
-
-.service-card{
-    background:var(--glass-bg);
-    border:1px solid rgba(255,255,255,0.15);
-    padding:15px;
-    border-radius:15px;
-    backdrop-filter:blur(8px);
-    transition:.3s;
-}
-
-.service-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 0 15px var(--neon-gold);
-}
-
-.service-card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-    border-radius:10px;
-}
-
-/* ABOUT */
-.about{
-    display:flex;
-    align-items:center;
-    gap:40px;
-    max-width:1100px;
-    margin:100px auto;
-    padding:20px;
-}
-
-.about img{
-    width:300px;
-    border-radius:10px;
-    box-shadow:0 0 15px var(--neon-blue);
-}
-
-.about div{
-    background:var(--glass-bg);
-    padding:25px;
-    border-radius:15px;
-    backdrop-filter:blur(10px);
-}
-
-/* CONTACT */
-.contact{
-    width:90%;
-    margin:80px auto;
-    padding:40px;
-    background:var(--glass-bg);
-    border-radius:15px;
-    backdrop-filter:blur(10px);
-}
-
-.contact-container{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-}
-
-.contact input, .contact textarea{
-    width:100%;
-    padding:12px;
-    margin-bottom:15px;
-    border:none;
-    background:transparent;
-    border-bottom:1px solid white;
-    color:white;
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:15px;
-    margin-top:50px;
-    background:#06090f;
-    border-top:1px solid rgba(255,255,255,0.2);
-}
-a{
-    color: black;
-}
-
-/* MOBILE RESPONSIVE */
-@media(max-width:900px){
-
-    .hero{
-        flex-direction:column;
-        text-align:center;
-        padding:30px;
-    }
-
-    .hero-text h1{
-        font-size:3.2rem;
-    }
-
-    .hero-img img{
-        width:260px;
-    }
-
-    .about{
-        flex-direction:column;
-        text-align:center;
-    }
-
-    .contact-container{
-        grid-template-columns:1fr;
-    }
-}
-/* Mobile hamburger */
-#menu-btn {
-  display:none;
-  font-size:1.7rem;
-  cursor:pointer;
-}
-
-/* Mobile menu behavior */
-@media(max-width:768px){
-  nav{ 
-    position:fixed;
-    right:-120%;
-    top:75px;
-    width:220px;
-    padding:20px;
-    backdrop-filter: blur(12px);
-    background:rgba(255,255,255,0.09);
-    border-left:1px solid rgba(255,255,255,0.2);
-    transition:.3s;
-    flex-direction:column;
-  }
-
-  nav.show{ right:0%; }
-
-  nav a{
-    margin:12px 0;
-    width:100%;
-    text-align:center;
-    display:block;
-  }
-
-  #menu-btn{ display:block; }
-}
-</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
 
-<header>
-  <!-- Logo -->
-  <div class="logo">
-    <img src="images/cafe logo.jpg" alt="CC Coffee House Logo">
-  </div>
-
-  <!-- Hamburger icon for mobile -->
-  <i id="menu-btn" class="fas fa-bars"></i>
-
-  <!-- Navigation -->
-  <nav>
-    <a href="index.html">HOME</a>
-    <a href="about.html">ABOUT</a>
-    <a href="menu.html">MENU</a>
-    <a href="contact.html">CONTACT</a>
-    <a href="RATING.html">RATE US</a>
-  </nav>
-
-  <!-- Login button -->
-  <a href="login.html" class="login-btn">
-    <i class="fa-solid fa-user"></i> Login
-  </a>
-</header>
-
-<!-- HERO SECTION -->
-<section class="hero" data-aos="fade-up">
-    <div class="hero-text">
-        <h1>The CC Coffee House</h1>
-        <p>Serving premium roasted coffee with a futuristic ambience since 1999.</p>
-        <button class="btn"><a href="menu.html">Order Your Coffee</a></button>
+    <!-- ── PAGE PRELOADER ── -->
+    <div id="page-preloader">
+        <img src="images/cafe logo.jpg" alt="CC Coffee House" class="preloader-logo">
+        <p class="preloader-brand-name">CC Coffee House</p>
+        <div class="preloader-bar-track">
+            <div class="preloader-bar-fill"></div>
+        </div>
     </div>
 
-    <div class="hero-img">
-        <img src="images/coffe_faling-removebg-preview.jpg" alt="Coffee Cup">
-    </div>
-</section>
+    <!-- PREMIUM FLOATING PILL NAVBAR -->
+    <header class="navbar-header" id="main-navbar">
+        <a href="index.html" class="brand-logo">
+            <img src="images/cafe logo.jpg" alt="CC Coffee House Logo">
+            <div>
+                <span class="brand-name">CC Coffee House</span>
+                <span class="brand-tagline">Artisan Roasters • Est. 1999</span>
+            </div>
+        </a>
 
-<!-- SERVICES -->
-<h1 class="section-title">OUR SERVICES</h1>
-
-<div class="services">
-    <div class="service-card" data-aos="fade-up">
-        <img src="images/party area.jpg">
-        <h3>Party Hall</h3>
-    </div>
-    <div class="service-card" data-aos="fade-up" data-aos-delay="150">
-        <img src="images/cafe-group-sitting-area.jpg">
-        <h3>Dine-In Area</h3>
-    </div>
-    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-        <img src="images/imported coffe.jpg">
-        <h3>Imported Coffee</h3>
-    </div>
-    <div class="service-card" data-aos="fade-up" data-aos-delay="450">
-        <img src="images/delivery.jpg">
-        <h3>Fast Delivery</h3>
-    </div>
-</div>
-
-<!-- ABOUT -->
-<section class="about" data-aos="fade-up">
-    <img src="images/about us cup.webp">
-    <div>
-        <h1>ABOUT US</h1>
-        <p>The CC Coffee Shop, since 1999, has been serving premium coffee and a peaceful atmosphere for all age groups. A perfect space to relax, chill, and enjoy aromatic coffee.</p>
-    </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" data-aos="fade-up">
-    <h1 class="section-title">CONTACT US</h1>
-
-    <div class="contact-container">
-        <div>
-            <h3>Email:</h3><p>youremail@gmail.com</p>
-            <h3>Phone:</h3><p>94XXXXXX09</p>
-            <h3>Address:</h3><p>1234, City XYZ</p>
+        <div class="status-badge-pill">
+            <span class="status-dot"></span> Open Now · 8 AM – 12 AM
         </div>
 
-        <form>
-            <input type="text" placeholder="Full Name" required>
-            <input type="email" placeholder="Email" required>
-            <textarea rows="4" placeholder="Message" required></textarea>
-            <button class="btn">Submit</button>
-        </form>
+        <i class="fa-solid fa-bars mobile-toggle" id="menu-toggle-btn"></i>
+
+        <nav class="nav-links" id="nav-links">
+            <a href="index.html"   class="nav-link-item active">HOME</a>
+            <a href="menu.html"    class="nav-link-item">MENU</a>
+            <a href="about.html"   class="nav-link-item">ABOUT</a>
+            <a href="contact.html" class="nav-link-item">CONTACT</a>
+            <a href="rating.html"  class="nav-link-item">RATE US</a>
+        </nav>
+
+        <div class="header-actions">
+            <button class="cart-trigger-btn" onclick="toggleCartDrawer(true)" title="View Cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge" style="display:none;">0</span>
+            </button>
+            <div id="header-auth-btn">
+                <a href="login.html" class="btn-primary" style="padding:9px 22px;font-size:0.84rem;">
+                    <i class="fa-solid fa-user"></i> Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══ HERO SECTION ═══ -->
+    <section class="hero-section">
+
+        <!-- Left: content -->
+        <div class="hero-content">
+            <span class="badge-tag">
+                <i class="fa-solid fa-sparkles"></i> Handcrafted Artisan Coffee
+            </span>
+
+            <h1 class="hero-title">Sip Perfection in an Aesthetic Ambience</h1>
+
+            <p class="hero-description">
+                Experience freshly roasted 100% Arabica beans blended with precision by master baristas in a warm, multi-colored café that feels like home.
+            </p>
+
+            <div class="hero-cta-group">
+                <a href="menu.html" class="btn-primary">
+                    <i class="fa-solid fa-mug-hot"></i> Explore Full Menu
+                </a>
+                <a href="about.html" class="btn-secondary">
+                    <i class="fa-solid fa-compass"></i> Discover Our Spaces
+                </a>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <h4>10k+</h4>
+                    <p>Happy Coffee Lovers</p>
+                </div>
+                <div class="stat-item">
+                    <h4>25+</h4>
+                    <p>Curated Blends</p>
+                </div>
+                <div class="stat-item">
+                    <h4>4.9 ★</h4>
+                    <p>Guest Rating</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: 3D podium showcase -->
+        <div class="hero-visual-podium">
+            <div class="podium-stage-container tilt-card">
+                <div class="podium-ring-outer"></div>
+                <div class="podium-ring-inner"></div>
+
+                <!-- Rising steam -->
+                <div class="coffee-steam-particles">
+                    <span class="steam-particle s1"><i class="fa-solid fa-cloud"></i></span>
+                    <span class="steam-particle s2"><i class="fa-solid fa-wind"></i></span>
+                    <span class="steam-particle s3"><i class="fa-solid fa-cloud"></i></span>
+                </div>
+
+                <!-- Chip: Brew Temp -->
+                <div class="floating-chip top-left">
+                    <div class="floating-chip-icon"><i class="fa-solid fa-temperature-arrow-up"></i></div>
+                    <div class="floating-chip-text">
+                        <h5>92°C Brew Temp</h5>
+                        <span>Optimal Extraction</span>
+                    </div>
+                </div>
+
+                <!-- Chip: Rating -->
+                <div class="floating-chip top-right">
+                    <div class="floating-chip-icon" style="background:rgba(244,208,104,0.22);color:var(--gold);">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="floating-chip-text">
+                        <h5>4.9 Superb Rating</h5>
+                        <span>10,000+ Guests</span>
+                    </div>
+                </div>
+
+                <!-- Coffee showcase image -->
+                <img src="images/coffe_faling-removebg-preview.png"
+                     alt="3D Signature Coffee Showcase"
+                     class="hero-showcase-img">
+
+                <!-- Chip: Arabica -->
+                <div class="floating-chip bottom-right">
+                    <div class="floating-chip-icon" style="background:rgba(129,178,154,0.22);color:var(--matcha);">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <div class="floating-chip-text">
+                        <h5>100% Arabica</h5>
+                        <span>Single Estate Bean</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ LIVE TICKER ═══ -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-item"><i class="fa-solid fa-sparkles" style="color:var(--gold);"></i> 15% OFF YOUR FIRST ONLINE ORDER</div>
+            <div class="ticker-item"><i class="fa-solid fa-fire" style="color:var(--terracotta);"></i> FRESHLY ROASTED ETHIOPIAN ARABICA BEANS</div>
+            <div class="ticker-item"><i class="fa-solid fa-champagne-glasses" style="color:var(--matcha);"></i> PRIVATE PARTY HALL BOOKINGS OPEN</div>
+            <div class="ticker-item"><i class="fa-solid fa-truck-fast" style="color:var(--amber);"></i> EXPRESS 30-MIN LOCAL DELIVERY</div>
+            <div class="ticker-item"><i class="fa-solid fa-mug-hot" style="color:var(--gold);"></i> NEW: HAZELNUT COLD BREW — TRY IT TODAY</div>
+            <div class="ticker-item"><i class="fa-solid fa-sparkles" style="color:var(--gold);"></i> 15% OFF YOUR FIRST ONLINE ORDER</div>
+            <div class="ticker-item"><i class="fa-solid fa-fire" style="color:var(--terracotta);"></i> FRESHLY ROASTED ETHIOPIAN ARABICA BEANS</div>
+            <div class="ticker-item"><i class="fa-solid fa-champagne-glasses" style="color:var(--matcha);"></i> PRIVATE PARTY HALL BOOKINGS OPEN</div>
+        </div>
     </div>
-</section>
 
-<footer>
-    © 2025 — All Rights Reserved- Mayank Sharma, The CC Coffe House
-</footer>
+    <!-- ═══ FEATURED MENU ═══ -->
+    <section class="section">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">POPULAR FAVORITES</span>
+            <h2 class="section-title">Customer Favorites</h2>
+            <p class="section-desc">Hand-selected bestsellers loved for their rich aroma, gourmet taste, and warm presentation.</p>
+        </div>
 
-<!-- AOS Script -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({ duration: 1200 });</script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const loginBtn = document.querySelector(".login-btn");
+        <div class="product-grid">
+            <!-- 1 -->
+            <div class="product-card tilt-card" data-aos="fade-up" data-aos-delay="80">
+                <span class="product-badge">Bestseller</span>
+                <div class="product-img-stage">
+                    <img src="menu pic/americano.jpg" alt="Americano">
+                </div>
+                <div class="product-info">
+                    <h3>Americano Espresso</h3>
+                    <p class="product-taste-tag">Rich double-shot espresso diluted with silky hot mineral water.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(4.9)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹110</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Americano', 110, 'menu pic/americano.jpg', 'Coffee')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
 
-    if(localStorage.getItem("loggedInUser")){
-        if(loginBtn){
-            loginBtn.innerHTML = '<i class="fa-solid fa-right-from-bracket"></i> Logout';
-            loginBtn.href = "#";
-            loginBtn.addEventListener("click", () => {
-                localStorage.removeItem("loggedInUser");
-                alert("Logged out successfully!");
-                location.reload();
-            });
-        }
-    }
-});
-</script>
-<script>
-const menuBtn = document.getElementById("menu-btn");
-const nav = document.querySelector("nav");
+            <!-- 2 -->
+            <div class="product-card tilt-card" data-aos="fade-up" data-aos-delay="160">
+                <span class="product-badge" style="background:rgba(224,122,95,0.18);border-color:var(--terracotta);color:var(--terracotta);">Chef's Pick</span>
+                <div class="product-img-stage">
+                    <img src="menu pic/frappe coffe.jpg" alt="Frappe">
+                </div>
+                <div class="product-info">
+                    <h3>Cold Frappe Supreme</h3>
+                    <p class="product-taste-tag">Blended iced espresso crowned with whipped vanilla cloud cream.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(5.0)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹179</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Frappe', 179, 'menu pic/frappe coffe.jpg', 'Coffee')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
 
-menuBtn.onclick = () => nav.classList.toggle("show");
-</script>
+            <!-- 3 -->
+            <div class="product-card tilt-card" data-aos="fade-up" data-aos-delay="240">
+                <span class="product-badge" style="background:rgba(244,208,104,0.16);border-color:var(--gold);color:var(--gold);">Hot Snack</span>
+                <div class="product-img-stage">
+                    <img src="menu pic/garlic bread.jpg" alt="Garlic Bread">
+                </div>
+                <div class="product-info">
+                    <h3>Cheesy Garlic Bread</h3>
+                    <p class="product-taste-tag">Toasted baguette rubbed with garlic butter & melted mozzarella.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(4.9)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹110</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Garlic Bread', 110, 'menu pic/garlic bread.jpg', 'Snacks')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
 
+            <!-- 4 -->
+            <div class="product-card tilt-card" data-aos="fade-up" data-aos-delay="320">
+                <span class="product-badge" style="background:rgba(226,149,120,0.18);border-color:var(--berry);color:var(--berry);">Top Favorite</span>
+                <div class="product-img-stage">
+                    <img src="https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?w=500&auto=format&fit=crop" alt="Red Velvet Pastry">
+                </div>
+                <div class="product-info">
+                    <h3>Red Velvet Cream Pastry</h3>
+                    <p class="product-taste-tag">Moist cocoa velvet sponge layered with smooth cream cheese frosting.</p>
+                    <div class="product-rating">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        <span>(4.9)</span>
+                    </div>
+                </div>
+                <div class="product-bottom">
+                    <span class="product-price">₹115</span>
+                    <button class="add-cart-btn" onclick="CartManager.addItem('Red Velvet Pastry', 115, 'https://images.unsplash.com/photo-1616541823729-00fe0aacd32c?w=500&auto=format&fit=crop', 'Desserts')">
+                        <i class="fa-solid fa-plus"></i> Add
+                    </button>
+                </div>
+            </div>
+        </div>
 
+        <div style="text-align:center; margin-top:56px;" data-aos="fade-up">
+            <a href="menu.html" class="btn-secondary" style="font-size:1rem; padding:14px 34px;">
+                View Full Menu <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ═══ WHY CC COFFEE HOUSE ═══ -->
+    <section class="section" style="background: linear-gradient(180deg, rgba(18,25,44,0.50) 0%, transparent 100%);">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">THE CAFÉ EXPERIENCE</span>
+            <h2 class="section-title">Why CC Coffee House?</h2>
+            <p class="section-desc">We combine gourmet culinary craft with a warm, multi-colored aesthetic atmosphere that keeps you coming back.</p>
+        </div>
+
+        <div class="grid-cards">
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="80">
+                <div class="card-icon"><i class="fa-solid fa-seedling"></i></div>
+                <h3>Imported Arabica Beans</h3>
+                <p>100% Arabica beans ethically sourced from high-altitude estates in Ethiopia, Colombia, and Brazil.</p>
+            </div>
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="160">
+                <div class="card-icon" style="background:rgba(129,178,154,0.12);border-color:var(--matcha);color:var(--matcha);">
+                    <i class="fa-solid fa-couch"></i>
+                </div>
+                <h3>Aesthetic Seating Lounge</h3>
+                <p>Relax, study, or celebrate in our multi-colored cozy seating environment designed for comfort and creativity.</p>
+            </div>
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="240">
+                <div class="card-icon" style="background:rgba(244,162,97,0.12);border-color:var(--amber);color:var(--amber);">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <h3>Express Delivery</h3>
+                <p>Piping fresh coffee and crunchy snacks delivered straight to your door within 30 minutes, guaranteed hot.</p>
+            </div>
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="320">
+                <div class="card-icon" style="background:rgba(244,208,104,0.12);border-color:var(--gold);color:var(--gold);">
+                    <i class="fa-solid fa-champagne-glasses"></i>
+                </div>
+                <h3>Private Celebration Hall</h3>
+                <p>Host unforgettable birthday parties, corporate meets, and anniversaries in our stunning private lounge.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ WHAT OUR GUESTS SAY ═══ -->
+    <section class="section">
+        <div class="section-header" data-aos="fade-up">
+            <span class="section-subtitle">LOVED BY GUESTS</span>
+            <h2 class="section-title">What Our Guests Say</h2>
+            <p class="section-desc">Real experiences from real coffee lovers who made CC Coffee House their favourite spot.</p>
+        </div>
+
+        <div class="grid-cards">
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="80">
+                <div style="color:var(--gold);font-size:1.1rem;margin-bottom:14px;display:flex;gap:4px;">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p style="font-style:italic;margin-bottom:20px;font-size:0.98rem;line-height:1.8;">"The best aesthetic coffee place in town! The terracotta vibe, Paneer sandwich, and Mocha are pure happiness. I visit twice a week!"</p>
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--terracotta),var(--amber));display:flex;align-items:center;justify-content:center;font-weight:800;color:#050810;font-size:1.1rem;">R</div>
+                    <div>
+                        <h4 style="color:var(--terracotta);font-size:1rem;">Rohan Verma</h4>
+                        <span style="font-size:0.78rem;color:var(--text-muted);">Verified Guest ✓</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="160">
+                <div style="color:var(--gold);font-size:1.1rem;margin-bottom:14px;display:flex;gap:4px;">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p style="font-style:italic;margin-bottom:20px;font-size:0.98rem;line-height:1.8;">"We booked the private party hall for a birthday celebration. The setup, hospitality, and food were beyond expectations. 10/10!"</p>
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--matcha),#4A8A6E);display:flex;align-items:center;justify-content:center;font-weight:800;color:#050810;font-size:1.1rem;">P</div>
+                    <div>
+                        <h4 style="color:var(--matcha);font-size:1rem;">Priya Sharma</h4>
+                        <span style="font-size:0.78rem;color:var(--text-muted);">Event Host ✓</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card tilt-card" data-aos="fade-up" data-aos-delay="240">
+                <div style="color:var(--gold);font-size:1.1rem;margin-bottom:14px;display:flex;gap:4px;">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p style="font-style:italic;margin-bottom:20px;font-size:0.98rem;line-height:1.8;">"My favourite place to work remotely. Fast WiFi, awesome Belgian waffles, peaceful atmosphere. Productive AND delicious!"</p>
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--gold));display:flex;align-items:center;justify-content:center;font-weight:800;color:#050810;font-size:1.1rem;">A</div>
+                    <div>
+                        <h4 style="color:var(--amber);font-size:1rem;">Ananya Roy</h4>
+                        <span style="font-size:0.78rem;color:var(--text-muted);">Regular Member ✓</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══ CTA BANNER ═══ -->
+    <section style="padding: 0 6% 100px 6%;">
+        <div data-aos="fade-up" style="
+            background: linear-gradient(135deg, rgba(224,122,95,0.18), rgba(244,208,104,0.12), rgba(129,178,154,0.12));
+            border: 1px solid rgba(224,122,95,0.35);
+            border-radius: 32px; padding: 60px 50px;
+            text-align: center; position: relative; overflow: hidden;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 50px rgba(224,122,95,0.15);
+        ">
+            <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(244,208,104,0.10) 0%,transparent 60%);pointer-events:none;"></div>
+            <span class="section-subtitle" style="display:block;margin-bottom:16px;">DON'T WAIT</span>
+            <h2 style="font-size:clamp(1.8rem,4vw,3rem);color:var(--text-heading);margin-bottom:16px;position:relative;">
+                Ready for Your Perfect Cup?
+            </h2>
+            <p style="color:var(--text-muted);font-size:1.05rem;margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto;position:relative;">
+                Browse our full menu and order your favourite coffee, snacks, or desserts for delivery or dine-in.
+            </p>
+            <div style="display:flex;gap:18px;justify-content:center;flex-wrap:wrap;position:relative;">
+                <a href="menu.html" class="btn-primary" style="font-size:1rem;padding:15px 36px;">
+                    <i class="fa-solid fa-mug-hot"></i> Order Now
+                </a>
+                <a href="contact.html" class="btn-secondary" style="font-size:1rem;padding:15px 36px;">
+                    <i class="fa-solid fa-phone"></i> Reserve a Table
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CART DRAWER -->
+    <div class="cart-drawer-overlay" id="cart-drawer-overlay" onclick="if(event.target===this) toggleCartDrawer(false)">
+        <div class="cart-drawer">
+            <div class="cart-drawer-header">
+                <h2><i class="fa-solid fa-basket-shopping"></i> Your Coffee Cart</h2>
+                <button class="close-drawer-btn" onclick="toggleCartDrawer(false)">&times;</button>
+            </div>
+            <div class="cart-items-body" id="cart-drawer-items"></div>
+            <div class="cart-drawer-footer">
+                <div class="cart-summary-line"><span>Subtotal</span><span id="cart-subtotal">₹0</span></div>
+                <div class="cart-summary-line"><span>Taxes & Service</span><span>₹0 (Free)</span></div>
+                <div class="cart-summary-line total"><span>Total Amount</span><span id="cart-total">₹0</span></div>
+                <button class="btn-primary checkout-btn" onclick="openCheckoutModal()">
+                    Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="modal-overlay" id="checkout-modal-overlay" onclick="if(event.target===this) closeCheckoutModal()">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-credit-card"></i> Order Checkout</h3>
+                <button class="close-drawer-btn" onclick="closeCheckoutModal()">&times;</button>
+            </div>
+            <form onsubmit="processCheckoutOrder(event)">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="cust-name" class="form-control" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" class="form-control" placeholder="+91 98765 43210" required>
+                </div>
+                <div class="form-group">
+                    <label>Delivery Address / Table No.</label>
+                    <textarea class="form-control" placeholder="Enter full address or café table number" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Payment Method</label>
+                    <select class="form-control">
+                        <option value="upi">UPI / GPay / PhonePe</option>
+                        <option value="card">Credit / Debit Card</option>
+                        <option value="cod">Cash on Delivery / Pay at Counter</option>
+                    </select>
+                </div>
+                <div style="margin:20px 0;font-size:1.15rem;font-weight:800;color:var(--terracotta);text-align:right;">
+                    Amount Payable: <span id="modal-order-total">₹0</span>
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%;padding:15px;">
+                    Confirm & Place Order <i class="fa-solid fa-check"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="brand-logo">
+                    <img src="images/cafe logo.jpg" alt="CC Coffee Logo">
+                    <span class="brand-name">CC Coffee House</span>
+                </a>
+                <p>Serving artisan coffee, delicious snacks, and unforgettable atmosphere since 1999. Your favourite corner of the city.</p>
+                <div class="social-links">
+                    <a href="https://instagram.com" class="social-link" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://facebook.com" class="social-link" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="mailto:contact@xyzcafe.com" class="social-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://wa.me/" class="social-link" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html"><i class="fa-solid fa-house" style="color:var(--terracotta);width:16px;"></i> Home</a></li>
+                    <li><a href="menu.html"><i class="fa-solid fa-utensils" style="color:var(--terracotta);width:16px;"></i> Full Menu</a></li>
+                    <li><a href="about.html"><i class="fa-solid fa-circle-info" style="color:var(--terracotta);width:16px;"></i> About Us</a></li>
+                    <li><a href="contact.html"><i class="fa-solid fa-phone" style="color:var(--terracotta);width:16px;"></i> Contact Us</a></li>
+                    <li><a href="rating.html"><i class="fa-solid fa-star" style="color:var(--terracotta);width:16px;"></i> Rate Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Café Hours</h4>
+                <ul>
+                    <li><i class="fa-solid fa-calendar-week" style="color:var(--amber);width:16px;"></i> Mon – Fri: 8:00 AM – 11:00 PM</li>
+                    <li><i class="fa-solid fa-calendar-days" style="color:var(--amber);width:16px;"></i> Sat – Sun: 8:00 AM – 12:00 AM</li>
+                    <li style="margin-top:8px;"><span style="color:var(--green-accent);font-size:0.82rem;font-weight:700;">● Open Now</span></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot" style="color:var(--terracotta);width:16px;"></i> XYZ Commercial Complex, City Center</li>
+                    <li><i class="fa-solid fa-phone" style="color:var(--terracotta);width:16px;"></i> +XX XYZ-XYZ-XYZ</li>
+                    <li><i class="fa-solid fa-envelope" style="color:var(--terracotta);width:16px;"></i> contact@xyzcafe.com</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 The CC Coffee House. Crafted with <span>♥</span> for coffee lovers everywhere.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 900, once: true, offset: 60 });</script>
+    <script src="js/main.js"></script>
 </body>
 </html>
-
-

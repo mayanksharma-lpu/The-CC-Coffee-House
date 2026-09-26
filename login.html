@@ -1,163 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CC Coffee — Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Account | The CC Coffee House</title>
+    <meta name="description" content="Sign in to your CC Coffee House account to access rewards, order history, and exclusive member deals.">
 
-<!-- GOOGLE FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Favicon & Social Meta -->
+    <link rel="icon" type="image/jpeg" href="images/cafe logo.jpg">
+    <meta property="og:title" content="Login & Rewards | The CC Coffee House">
+    <meta property="og:description" content="Sign in to your CC Coffee House account to access member perks, rewards, and expedited orders.">
+    <meta property="og:image" content="images/cafe logo.jpg">
+    <meta property="og:type" content="website">
 
-<style>
-:root{
-    --neon-gold:#ffdf59;
-    --neon-blue:#4ec4ff;
-    --white-frost:rgba(255,255,255,0.15);
-}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+    <link rel="stylesheet" href="css/styles.css">
 
-*{ margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
+    <style>
+        /* ─── Login-specific styles ─── */
+        .auth-wrapper {
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            padding: 130px 20px 60px;
+            position: relative;
+        }
+        .auth-wrapper::before {
+            content: '';
+            position: absolute; inset: 0; z-index: -1;
+            background: radial-gradient(ellipse 60% 70% at 50% 50%, rgba(224,122,95,0.14) 0%, transparent 65%);
+        }
+        .auth-card {
+            width: 100%; max-width: 470px;
+            background: linear-gradient(165deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border: 1px solid var(--glass-border-warm);
+            border-radius: 32px; padding: 46px 44px;
+            box-shadow: var(--shadow-lg), var(--shadow-terra), 0 0 80px rgba(224,122,95,0.12);
+            position: relative; overflow: hidden;
+        }
+        .auth-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, var(--terracotta), var(--amber), var(--matcha), var(--gold));
+        }
+        .auth-card::after {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(224,122,95,0.25), transparent);
+        }
+        .auth-icon-wrap {
+            text-align: center; margin-bottom: 30px;
+        }
+        .auth-icon-wrap .mug-icon {
+            font-size: 3rem; color: var(--terracotta);
+            filter: drop-shadow(0 0 18px rgba(224,122,95,0.50));
+            animation: mugSway 4s ease-in-out infinite alternate;
+            display: inline-block;
+        }
+        @keyframes mugSway {
+            0%   { transform: rotate(-5deg) scale(1); }
+            100% { transform: rotate(5deg) scale(1.08); }
+        }
+        .auth-title { font-size: 2.1rem; text-align: center; color: var(--text-heading); margin-bottom: 4px; }
+        .auth-subtitle { font-size: 0.90rem; color: var(--text-muted); text-align: center; margin-bottom: 28px; }
 
-body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#07101c,#0f1b33,#07121f);
-    overflow:hidden;
-}
+        .auth-tab-bar {
+            display: flex;
+            background: var(--bg-surface);
+            border-radius: 30px; padding: 5px; margin-bottom: 30px;
+            border: 1px solid var(--glass-border);
+        }
+        .auth-tab-bar button {
+            flex: 1; padding: 10px; border-radius: 26px; border: none; cursor: pointer;
+            font-weight: 700; font-size: 0.88rem; transition: var(--ease-normal);
+            font-family: var(--font-body);
+        }
 
-/* BLUR GLASS BOX */
-.login-container{
-    width:400px;
-    padding:40px;
-    background:var(--white-frost);
-    backdrop-filter:blur(22px);
-    border:1px solid rgba(255,255,255,0.25);
-    border-radius:18px;
-    box-shadow:0 0 25px rgba(0,0,0,0.45);
-    animation:fadeIn .9s ease;
-}
+        .input-with-icon {
+            position: relative;
+        }
+        .input-with-icon .form-control { padding-left: 48px; }
+        .input-with-icon .input-icon {
+            position: absolute; left: 18px; top: 50%;
+            transform: translateY(-50%); color: var(--text-muted); font-size: 1rem;
+        }
 
-/* TITLE */
-.login-container h2{
-    text-align:center;
-    font-size:2rem;
-    color:var(--neon-gold);
-    margin-bottom:25px;
-    text-shadow:0 0 12px var(--neon-gold);
-}
-
-/* INPUT STYLING */
-.input-box{
-    margin-bottom:18px;
-}
-.input-box label{
-    font-size:.9rem;
-    opacity:.85;
-    color:#fff;
-}
-.input-box input{
-    width:100%;
-    margin-top:6px;
-    padding:12px;
-    font-size:1rem;
-    color:white;
-    background:rgba(255,255,255,0.08);
-    border:none;
-    border-radius:10px;
-    outline:none;
-    transition:.3s;
-}
-.input-box input:focus{
-    box-shadow:0 0 12px var(--neon-blue);
-    border:1px solid var(--neon-blue);
-}
-
-/* BUTTON */
-button{
-    width:100%;
-    padding:13px;
-    font-size:1.1rem;
-    border:none;
-    border-radius:25px;
-    background:var(--neon-gold);
-    cursor:pointer;
-    font-weight:600;
-}
-button:hover{
-    transform:scale(1.03);
-    box-shadow:0 0 15px var(--neon-gold);
-}
-
-/* BOTTOM LINKS */
-.bottom-text{
-    text-align:center;
-    margin-top:15px;
-}
-.bottom-text a{
-    color:var(--neon-blue);
-    text-decoration:none;
-    font-size:.9rem;
-}
-.bottom-text a:hover{
-    text-shadow:0 0 10px var(--neon-blue);
-}
-
-/* ANIMATION */
-@keyframes fadeIn{
-    from{ opacity:0; transform:translateY(30px); }
-    to{ opacity:1; transform:translateY(0); }
-}
-</style>
+        .perks-strip {
+            display: flex; gap: 18px; justify-content: center;
+            margin-bottom: 28px; flex-wrap: wrap;
+        }
+        .perk-chip {
+            display: flex; align-items: center; gap: 7px;
+            padding: 6px 14px;
+            background: rgba(224,122,95,0.10);
+            border: 1px solid rgba(224,122,95,0.25);
+            border-radius: 30px;
+            font-size: 0.78rem; font-weight: 700; color: var(--text-body);
+        }
+        .perk-chip i { color: var(--terracotta); font-size: 0.9rem; }
+    </style>
 </head>
-
 <body>
 
-<div class="login-container">
-    <h2>Welcome Back ☕</h2>
-
-    <div class="input-box">
-        <label>Email</label>
-        <input type="email" id="email" placeholder="Enter your email">
+    <!-- ── PAGE PRELOADER ── -->
+    <div id="page-preloader">
+        <img src="images/cafe logo.jpg" alt="CC Coffee House" class="preloader-logo">
+        <p class="preloader-brand-name">CC Coffee House</p>
+        <div class="preloader-bar-track">
+            <div class="preloader-bar-fill"></div>
+        </div>
     </div>
 
-    <div class="input-box">
-        <label>Password</label>
-        <input type="password" id="password" placeholder="Enter your password">
+    <!-- NAVBAR -->
+    <header class="navbar-header" id="main-navbar">
+        <a href="index.html" class="brand-logo">
+            <img src="images/cafe logo.jpg" alt="CC Coffee House Logo">
+            <div>
+                <span class="brand-name">CC Coffee House</span>
+                <span class="brand-tagline">Artisan Roasters • Est. 1999</span>
+            </div>
+        </a>
+        <div class="status-badge-pill">
+            <span class="status-dot"></span> Open Now · 8 AM – 12 AM
+        </div>
+        <i class="fa-solid fa-bars mobile-toggle" id="menu-toggle-btn"></i>
+        <nav class="nav-links" id="nav-links">
+            <a href="index.html"   class="nav-link-item">HOME</a>
+            <a href="menu.html"    class="nav-link-item">MENU</a>
+            <a href="about.html"   class="nav-link-item">ABOUT</a>
+            <a href="contact.html" class="nav-link-item">CONTACT</a>
+            <a href="rating.html"  class="nav-link-item">RATE US</a>
+        </nav>
+        <div class="header-actions">
+            <button class="cart-trigger-btn" onclick="toggleCartDrawer(true)" title="View Cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge" style="display:none;">0</span>
+            </button>
+            <div id="header-auth-btn">
+                <a href="login.html" class="btn-primary" style="padding:9px 22px;font-size:0.84rem;">
+                    <i class="fa-solid fa-user"></i> Login
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- AUTH MAIN -->
+    <div class="auth-wrapper">
+
+        <!-- Perks strip above card -->
+        <div class="perks-strip" data-aos="fade-down">
+            <div class="perk-chip"><i class="fa-solid fa-gift"></i> Exclusive Rewards</div>
+            <div class="perk-chip"><i class="fa-solid fa-tag"></i> Member Discounts</div>
+            <div class="perk-chip"><i class="fa-solid fa-clock"></i> Fast Checkout</div>
+        </div>
+
+        <!-- Auth Card -->
+        <div class="auth-card" data-aos="zoom-in" data-aos-duration="700">
+            <div class="auth-icon-wrap">
+                <i class="fa-solid fa-mug-hot mug-icon"></i>
+            </div>
+
+            <h2 class="auth-title" id="auth-title">Welcome Back ☕</h2>
+            <p class="auth-subtitle" id="auth-subtitle">Sign in to access your coffee rewards & orders.</p>
+
+            <!-- Tab Toggle -->
+            <div class="auth-tab-bar">
+                <button id="tab-login" class="btn-primary" style="padding:10px;" onclick="switchAuthTab('login')">
+                    <i class="fa-solid fa-right-to-bracket"></i> Login
+                </button>
+                <button id="tab-signup" style="background:transparent;color:var(--text-muted);" onclick="switchAuthTab('signup')">
+                    <i class="fa-solid fa-user-plus"></i> Create Account
+                </button>
+            </div>
+
+            <form onsubmit="handleAuthSubmit(event)">
+                <!-- Name (signup only) -->
+                <div class="form-group" id="name-group" style="display:none;">
+                    <label>Full Name</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-user input-icon"></i>
+                        <input type="text" id="auth-name" class="form-control" placeholder="Your full name">
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-envelope input-icon"></i>
+                        <input type="email" id="auth-email" class="form-control" placeholder="guest@xyzcafe.com" required>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label>Password</label>
+                    <div class="input-with-icon" style="position:relative;">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input type="password" id="auth-password" class="form-control" placeholder="••••••••" required>
+                        <i class="fa-solid fa-eye" id="toggle-pwd-icon" onclick="togglePasswordVisibility()"
+                            style="position:absolute;right:18px;top:50%;transform:translateY(-50%);color:var(--text-muted);cursor:pointer;z-index:5;"></i>
+                    </div>
+                </div>
+
+                <button type="submit" id="auth-submit-btn" class="btn-primary" style="width:100%;padding:15px;margin-top:10px;">
+                    Sign In <i class="fa-solid fa-right-to-bracket"></i>
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div style="display:flex;align-items:center;gap:14px;margin:24px 0;">
+                <div style="flex:1;height:1px;background:var(--glass-border);"></div>
+                <span style="font-size:0.82rem;color:var(--text-muted);white-space:nowrap;">or continue as</span>
+                <div style="flex:1;height:1px;background:var(--glass-border);"></div>
+            </div>
+
+            <!-- Quick Demo Login -->
+            <button class="btn-secondary" onclick="quickDemoLogin()" style="width:100%;padding:13px;font-size:0.88rem;">
+                <i class="fa-solid fa-bolt" style="color:var(--gold);"></i> Quick Demo Login
+            </button>
+        </div>
+
+        <!-- Small note below -->
+        <p style="margin-top:20px;font-size:0.80rem;color:var(--text-muted);text-align:center;" data-aos="fade-up" data-aos-delay="200">
+            By signing in you agree to our <a href="#" style="color:var(--terracotta);">Terms</a> &
+            <a href="#" style="color:var(--terracotta);">Privacy Policy</a>
+        </p>
     </div>
 
-    <button onclick="login()">Login</button>
+    <!-- Minimal Footer -->
+    <footer class="footer" style="padding:28px 6%;">
+        <div class="footer-bottom" style="border-top:none;padding-top:0;">
+            <p>© 2026 The CC Coffee House. Crafted with <span>♥</span> for coffee lovers.</p>
+        </div>
+    </footer>
 
-    <p class="bottom-text">
-        New here? <a onclick="createAccount()" style="cursor:pointer;">Create an account</a>
-    </p>
-</div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 800, once: true });</script>
+    <script src="js/main.js"></script>
+    <script>
+        let currentTab = 'login';
 
+        function switchAuthTab(tab) {
+            currentTab = tab;
+            const loginBtn  = document.getElementById('tab-login');
+            const signupBtn = document.getElementById('tab-signup');
+            const nameGrp   = document.getElementById('name-group');
+            const title     = document.getElementById('auth-title');
+            const subtitle  = document.getElementById('auth-subtitle');
+            const submitBtn = document.getElementById('auth-submit-btn');
 
-<script>
-function login(){
-    let email = document.getElementById("email").value;
-    let pass = document.getElementById("password").value;
+            if (tab === 'login') {
+                loginBtn.className  = 'btn-primary';
+                loginBtn.style.padding = '10px';
+                signupBtn.className = '';
+                signupBtn.style.cssText = 'background:transparent;color:var(--text-muted);';
+                nameGrp.style.display  = 'none';
+                title.textContent   = 'Welcome Back ☕';
+                subtitle.textContent= 'Sign in to access your coffee rewards & orders.';
+                submitBtn.innerHTML = 'Sign In <i class="fa-solid fa-right-to-bracket"></i>';
+            } else {
+                signupBtn.className = 'btn-primary';
+                signupBtn.style.cssText = 'padding:10px;';
+                loginBtn.className  = '';
+                loginBtn.style.cssText  = 'background:transparent;color:var(--text-muted);';
+                nameGrp.style.display  = 'block';
+                title.textContent   = 'Join CC Family ☕';
+                subtitle.textContent= 'Create an account and start earning coffee rewards.';
+                submitBtn.innerHTML = 'Create Account <i class="fa-solid fa-user-plus"></i>';
+            }
+        }
 
-    let savedUser = JSON.parse(localStorage.getItem("user"));
+        function togglePasswordVisibility() {
+            const inp  = document.getElementById('auth-password');
+            const icon = document.getElementById('toggle-pwd-icon');
+            if (inp.type === 'password') {
+                inp.type = 'text';
+                icon.className = 'fa-solid fa-eye-slash';
+            } else {
+                inp.type = 'password';
+                icon.className = 'fa-solid fa-eye';
+            }
+        }
 
-    if(savedUser && savedUser.email === email && savedUser.password === pass){
-        localStorage.setItem("loggedInUser", email);
-        alert("Login Successful!");
-        window.location.href = "index.html";
-    } else {
-        alert("Invalid email or password");
-    }
-}
+        function handleAuthSubmit(event) {
+            event.preventDefault();
+            const email = document.getElementById('auth-email').value;
+            const pwd   = document.getElementById('auth-password').value;
+            if (currentTab === 'signup') {
+                localStorage.setItem('user', JSON.stringify({ email, password: pwd }));
+                showToast('Account created! Logging you in... ☕', 'success');
+            }
+            localStorage.setItem('loggedInUser', email);
+            showToast('Logged in successfully! Welcome back ☕', 'success');
+            setTimeout(() => { window.location.href = 'index.html'; }, 1000);
+        }
 
-function createAccount(){
-    let email = prompt("Enter Email:");
-    let pass = prompt("Create Password:");
-    if(email && pass){
-        localStorage.setItem("user", JSON.stringify({email, password:pass}));
-        alert("Account created! Login Now.");
-    }
-}
-</script>
+        function quickDemoLogin() {
+            localStorage.setItem('loggedInUser', 'guest@xyzcafe.com');
+            showToast('Logged in as Guest Coffee Lover! ☕', 'success');
+            setTimeout(() => { window.location.href = 'index.html'; }, 800);
+        }
+    </script>
 </body>
 </html>
